@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us
+  </title>
+  <link
+    rel="shortcut icon"
+    href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
+    type="image/x-icon"
+  >
+  <style>
+    /*******************************************************
+     * LIGHT-THEME COLOR PALETTE (Beige & Gold):
+     *   Body background:  #fff8ed (Very Light Beige)
+     *   Container:        #ffffff (White)
+     *   Dark Text:        #212529
+     *   Primary Accent:   #a36711 (Dark Gold/Brown)
+     *   Secondary Accent: #d9a456 (Medium Gold/Brown)
+     *   Subtle BG:        #ffeed2 (Light Beige/Cream)
+    *******************************************************/
+
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff8ed;  /* Body background */
+      color: #212529;             /* Dark text */
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Fade-In Animation */
+    .fade-element {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-element.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /*******************************************************
+     * HEADER & NAVIGATION
+     *******************************************************/
+    header {
+      background-color: #a36711; /* White container */
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffeed2; /* Primary accent for logo */
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #d9a456; /* Dark text for nav links */
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeed2; /* Primary accent on hover */
+    }
+
+    /*******************************************************
+     * HEADER IMAGE
+     *******************************************************/
+    .header-image {
+      width: 100%;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      background-color: #ffeed2; /* Subtle BG */
+    }
+    .header-image img {
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      object-fit: cover;
+    }
+    @media (max-width: 600px) {
+      .header-image img {
+        width: 95%;
+      }
+    }
+
+    /*******************************************************
+     * ABOUT SECTION
+     *******************************************************/
+    .about-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #ffffff; /* White container */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .content-block {
+      margin-bottom: 60px;
+    }
+    .content-block h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #a36711; /* Primary accent for headings */
+    }
+    .content-block p {
+      font-size: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #212529; /* Dark text */
+    }
+
+    /*******************************************************
+     * TESTIMONIALS
+     *******************************************************/
+    .testimonials {
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 80%;
+      max-width: 1200px;
+      margin: 40px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: #ffeed2; /* Subtle BG for testimonials */
+    }
+    .testimonials h2 {
+      font-size: 28px;
+      color: #a36711; /* Primary accent for heading */
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .testimonial-container {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .testimonial {
+      background: #ffffff;       /* White container for each testimonial */
+      color: #212529;
+      padding: 20px;
+      border-radius: 15px;
+      width: 30%;
+      min-width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .testimonial:hover {
+      transform: translateY(-5px);
+    }
+    .testimonial h3 {
+      margin-bottom: 5px;
+      font-size: 22px;
+      color: #212529;
+    }
+    .testimonial .role {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #212529;
+    }
+
+    /*******************************************************
+     * TEAM SECTION
+     *******************************************************/
+    .team-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background-color: #ffffff; /* White container */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .team-member {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+    .photo-linkedin {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 20px;
+    }
+    .photo-linkedin img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+    .photo-linkedin .linkedin {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #a36711; /* Primary accent for "in" text */
+    }
+    .info {
+      flex: 1;
+      text-align: left;
+    }
+    .info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      color: #212529;
+    }
+    .info .title {
+      font-weight: bold;
+      color: #212529;
+      margin-bottom: 10px;
+    }
+    .info p {
+      margin-bottom: 10px;
+      color: #212529;
+    }
+    @media (max-width: 768px) {
+      .team-member {
+        flex-direction: column;
+        align-items: center;
+      }
+      .photo-linkedin {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      .info {
+        text-align: center;
+      }
+    }
+
+    /*******************************************************
+     * CARD CONTAINER
+     *******************************************************/
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ffffff; /* White container */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .card {
+      background-color: #ffeed2; /* Subtle BG for cards */
+      border-radius: 8px;
+      padding: 20px;
+      width: calc(33.33% - 20px);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      color: #a36711; /* Primary accent for heading */
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #212529; /* Dark text */
+      margin-bottom: 15px;
+    }
+    .card .highlight {
+      color: #212529;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+    /*******************************************************
+     * PRICE TABLE SECTION
+     *******************************************************/
+    .price-table-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      background-color: #ffffff; /* White container */
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .price-table-section h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      color: #a36711; /* Primary accent for heading */
+    }
+    .table-responsive {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      animation: fadeIn 1.5s ease-out;
+    }
+    thead th {
+      background-color: #ffeed2; /* Subtle BG for table header */
+      padding: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #d9a456; /* Secondary accent border */
+      color: #212529;
+    }
+    tbody td {
+      padding: 15px;
+      border-bottom: 1px solid #d9a456; /* Secondary accent border */
+      font-size: 1rem;
+      color: #212529;
+    }
+    tbody tr {
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    tbody tr:hover {
+      background-color: #ffeed2; /* Subtle BG on hover */
+      transform: translateY(-3px);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      thead th, tbody td {
+        padding: 10px;
+      }
+      .price-table-section h1 {
+        font-size: 2rem;
+      }
+    }
+
+    /*******************************************************
+     * FOOTER
+     *******************************************************/
+    footer {
+      background: #ffffff; /* White container */
+      color: #212529;      /* Dark text */
+      padding: 40px 20px;
+      margin-top: 40px;
+      border-top: 1px solid #d9a456; /* Secondary accent border on top */
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: #a36711; /* Primary accent for headings */
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .footer-column a {
+      text-decoration: none;
+      color: #212529;
+    }
+    .footer-column a:hover {
+      text-decoration: underline;
+    }
+    .footer-column p {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    .footer-icon {
+      margin-right: 8px;
+      font-size: 1rem;
+      color: #a36711; /* Primary accent for icons if desired */
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="fade-element">
+    <div class="container container-header">
+      <div class="logo">Shree Krishna Dairy</div>
+      <nav>
+        <ul>
+          
+            <li><a href="/Krishna Dairy/index.html">Home</a></li>
+            <li><a href="/index.html/product ikn dex.html">Products</a></li>
+            <li><a href="/index.html/contect us index.html">Contact Us</a></li>
+            <li><a href="/index.html/about us index.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HEADER IMAGE -->
+  <section class="header-image fade-element">
+    <img
+      src="https://pravarshaindustries.com/img/aboutus.webp"
+      alt="Dairy barn with cows"
+    >
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section fade-element">
+    <div class="content-block">
+      <h2>Who are we?</h2>
+      <p>
+        Shree Krishna Dairy is a corporate citizen that understands the importance of
+        hygienic milk and dairy products. Established in 1975, we’ve proudly served
+        our community with high‐quality dairy items crafted with tradition, care, and
+        innovation.
+      </p>
+    </div>
+    <div class="content-block">
+      <h2>Our mission</h2>
+      <p>
+        Our mission is to become the premier retailer of high-quality food products by
+        delivering unmatched customer value and acting as responsible citizens in our
+        communities.
+      </p>
+    </div>
+    <div class="content-block">
+      <h2>Our vision</h2>
+      <p>
+        We strive to meet the diverse needs of our consumers every day by marketing
+        and selling foods that are consistent and of the highest quality.
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials fade-element">
+    <h2>What The Clients Say About Us</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <h3>Amit Kumar</h3>
+        <p class="role">Customer</p>
+        <p>
+          Shree Krishna Dairy consistently delivers fresh, high-quality products with
+          warm, friendly service that makes every visit a delight....
+        </p>
+      </div>
+      <div class="testimonial">
+        <h3>Ankit Poddar</h3>
+        <p class="role">Customer</p>
+        <p>
+          I always leave with a smile thanks to their excellent service and top-notch
+          milk quality......
+        </p>
+      </div>
+      <div class="testimonial">
+        <h3>Mohit Sharma</h3>
+        <p class="role">Customer</p>
+        <p>
+          It's refreshing to see an owner so committed to customer satisfaction and
+          product excellence....
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="team-section fade-element">
+    <div class="team-member">
+      <div class="photo-linkedin">
+        <img
+          src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png"
+          alt="Photo of Rampyare Mishra"
+        >
+       
+      </div>
+      <div class="info">
+        <h3>Rampyare Mishra</h3>
+        <p class="title">Director</p>
+        <p>
+            In 1975, Mr. Rampyare Mishra started Shree Krishna Dairy with a small shop selling only cow milk and curd. He focused on good quality and customer service, which made people trust him. Because of this trust and increasing demand, he added buffalo milk, mava, and lassi to his products within a couple of years. Mr. Mishra's strong leadership and focus on quality made the dairy a well-known and trusted place for dairy products.
+
+        </p>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="photo-linkedin">
+        <img
+          src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png"
+          alt="Photo of Vedprakash Mishra"
+        >
+    
+      </div>
+      <div class="info">
+        <h3>Vedprakash Mishra</h3>
+        <p class="title">Director</p>
+        <p>
+            Mr. Vedprakash Mishra, Mr. Rampyare Mishra's son, has greatly changed Shree Krishna Dairy since 2001. He is known for his hard work and friendly smile. He took the dairy, which started with just cow milk and curd, and added ice cream, cold drinks, and taak. His friendly way of dealing with customers and starting home delivery made customers trust the dairy even more. Mr. Vedprakash Mishra's focus on quality and new ideas keeps Shree Krishna Dairy a loved and trusted name in the area.
+        </p>
+      </div>
+    </div>
+    <div class="team-member">
+      <div class="photo-linkedin">
+        <img
+          src="https://i.postimg.cc/5yxmXRJp/Screenshot-2025-03-01-160226.png"
+          alt="Photo of Mrs. Sanju Mishra"
+        >
+      
+      </div>
+      <div class="info">
+        <h3>Mrs. Sanju Mishra</h3>
+        <p class="title">Finance</p>
+        <p>
+          Mrs. Sanju Mishra, the wife of Vedprakash Mishra, manages the finances at
+          Shree Krishna Dairy. She introduced a card payment system that allows
+          customers to buy on credit and pay later, making it easier for them. Her
+          hard work and support, alongside her husband, have helped improve and grow
+          the business.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARD CONTAINER -->
+  <div class="card-container fade-element scroll-slide-right">
+    <div class="card">
+      <h2>Legal Compliance</h2>
+      <p>
+        At <span class="highlight">Shree Krishna Dairy</span>, we strictly ensure
+        compliance with all legal norms, whether for our products or brands in the
+        market. We understand its importance and guarantee its fulfilment.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Food Safety Guarantee</h2>
+      <p>
+        We believe in the philosophy of <span class="highlight">"Consumer First"</span>.
+        As part of our corporate responsibility, we ensure that food safety is our top
+        priority. All our plants have FSSAI licenses, certifying our commitment to food
+        safety and dependability.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Consumer Preference</h2>
+      <p>
+        <span class="highlight">Shree Krishna Dairy</span> has a strong focus on its
+        consumers. We go the extra mile to provide consistent quality products that
+        cater to their organoleptic preferences. We not only aim to give consumers the
+        best but also understand their needs through robust customer-connect programs.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Customer Satisfaction</h2>
+      <p>
+        Our customer satisfaction comes not only from consistent quality products but
+        also from our customer care services, which are readily available to provide
+        product-related information and address any queries or concerns.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Supplier Assurance</h2>
+      <p>
+        We strive to ensure consistent quality products with conforming purity, made
+        possible through our own
+        <span class="highlight">Shree Krishna Dairy Distribution Centre</span>, agents,
+        and retailers. We ensure on-time deliveries so that our products are available
+        to consumers 24/7.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Quality at Best Price</h2>
+      <p>
+        Being in the dairy market, we ensure our products are not only the healthiest
+        and tastiest but also affordable for everyone. Quality is not something we
+        strive for; it’s something we guarantee with consistency.
+      </p>
+    </div>
+  </div>
+
+ 
+   <!-- =====================
+       Price Table Section
+       ===================== -->
+       <div class="container price-table-section scroll-slide-up">
+        <h1>Milk Products Price List</h1>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Weight</th>
+                <th>Price (Rs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cow Milk</td>
+                <td>1 liter</td>
+                <td>60</td>
+              </tr>
+              <tr>
+                <td>Buffalo Milk</td>
+                <td>1 liter</td>
+                <td>70</td>
+              </tr>
+              <tr>
+                <td>Paneer</td>
+                <td>1 kg</td>
+                <td>320</td>
+              </tr>
+              <tr>
+                <td>Curd</td>
+                <td>1 kg</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <td>Mava</td>
+                <td>1 kg</td>
+                <td>320</td>
+              </tr>
+              <tr>
+                <td>Ghee</td>
+                <td>250 gram</td>
+                <td>150</td>
+              </tr>
+              <tr>
+                <td>Taak</td>
+                <td>1 liter</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Cheese</td>
+                <td>200 gram</td>
+                <td>130</td>
+              </tr>
+              <tr>
+                <td>Lassi</td>
+                <td>1 glass</td>
+                <td>30</td>
+              </tr>
+              <tr>
+                <td>Shrikhand</td>
+                <td>Small box</td>
+                <td>32</td>
+              </tr>
+              <tr>
+                <td>Amul Fresh Cream</td>
+                <td>per pack</td>
+                <td>68</td>
+              </tr>
+              <tr>
+                <td>Butter</td>
+                <td>1 pack</td>
+                <td>60</td>
+              </tr>
+              <tr>
+                <td>Frozen Green Peas</td>
+                <td>1 kg</td>
+                <td>110</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+  <!-- FOOTER -->
+  <footer class="fade-element">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul>
+            <a href="/Krishna Dairy/Products index.html"><li>Milk</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Ghee</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Paneer</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Curd</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Buttermilk</li></a>
+          
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Policy</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Cancellation/Refund Policy</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>
+          <span class="footer-icon">&#128205;</span>
+          shop no 3, usha apt. indra nagar, near purnima chalwk, kalyan (w), 421301
+        </p>
+        <p>
+          <span class="footer-icon">&#128231;</span>
+          <a href="mailto:support@pravarshaindustries.com">veduforall@gmail.com</a>
+        </p>
+        <p>
+          <span class="footer-icon">&#128222;</span>
+          8104329223 &nbsp;|&nbsp; 882851983
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL ANIMATION SCRIPT -->
+  <script>
+    const fadeElements = document.querySelectorAll('.fade-element');
+    const observerOptions = { threshold: 0.1 };
+    const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    fadeElements.forEach(el => fadeInOnScroll.observe(el));
+  </script>
+</body>
+</html>

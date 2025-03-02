@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product</title>
+  <link
+    rel="shortcut icon"
+    href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
+    type="image/x-icon"
+  >
+  <style>
+    /*******************************************************
+     * LIGHT-THEME COLOR PALETTE (Beige & Gold):
+     *   Body background:  #fff8ed (Very Light Beige)
+     *   Container:        #ffffff (White)
+     *   Dark Text:        #212529
+     *   Primary Accent:   #a36711 (Dark Gold/Brown)
+     *   Secondary Accent: #d9a456 (Medium Gold/Brown)
+     *   Subtle BG:        #ffeed2 (Light Beige/Cream)
+     *******************************************************/
+
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif, Arial, sans-serif;
+      background-color: #fff8ed;  /* Lightest background */
+      color: #212529;             /* Dark text color */
+      line-height: 1.6;
+      overflow-x: hidden;         /* Prevent horizontal scroll */
+    }
+
+    /*******************************************************
+     * FADE-IN ON SCROLL
+     *******************************************************/
+    .fade-element {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-element.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /*******************************************************
+     * HEADER & NAVIGATION
+     *******************************************************/
+    header {
+      background-color: #a36711; /* White header container */
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffeed2; /* Primary accent color for logo */
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li {
+      padding: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #d9a456; /* Dark text */
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeed2; /* Primary accent on hover */
+      transform: translateY(-2px);
+    }
+
+    /*******************************************************
+     * CATEGORY (PILL) BUTTONS
+     *******************************************************/
+    .category-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      justify-content: center; /* center them horizontally */
+      background-color: #ffffff; /* White container for contrast */
+    }
+    .category-button {
+      background-color: #ffeed2; /* Subtle background color for buttons */
+      color: #212529;
+      border: 1px solid #d9a456; /* Secondary accent as border */
+      border-radius: 20px;       /* pill shape */
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition:
+        background-color 0.3s,
+        color 0.3s,
+        box-shadow 0.3s,
+        transform 0.3s;
+    }
+    .category-button a {
+      color: inherit; /* Inherit button text color */
+      text-decoration: none;
+    }
+    /* Active (selected) button */
+    .category-button.active {
+      background-color: #a36711; /* Primary accent for active */
+      color: #ffffff;            /* White text for contrast */
+      border-color: #a36711;
+    }
+    /* Hover effect */
+    .category-button:hover {
+      transform: translateY(-2px);
+      background-color: #d9a456; /* Secondary accent on hover */
+      color: #212529;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /*******************************************************
+     * PRODUCTS SECTION
+     *******************************************************/
+    .products-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: #ffffff; /* White container for product section */
+      margin-top: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
+    .products-section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #a36711; /* Primary accent for headings */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    .products-section h2::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #d9a456; /* Secondary accent color */
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Product grid layout */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background-color: #ffeed2; /* Subtle background for cards */
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .product-card img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .product-card img:hover {
+      transform: scale(1.1);
+    }
+    .product-card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: #212529; /* Dark text */
+      min-height: 45px; /* helps align card heights if titles vary */
+    }
+    .product-card .price-volume {
+      font-size: 0.9rem;
+      color: #212529;
+      margin-bottom: 10px;
+    }
+    .product-card .in-stock {
+      font-weight: 600;
+      color: #28a745; /* green text for "In Stock" indicator */
+      margin-bottom: 10px;
+    }
+
+    /* Add Button (the plus sign) */
+    .add-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #a36711; /* Primary accent border */
+      background-color: #ffeed2;
+      color: #a36711; /* Primary accent text */
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .add-btn:hover {
+      background-color: #a36711; /* Primary accent on hover */
+      color: #ffffff;           /* White text on hover */
+      transform: scale(1.1);
+    }
+
+    /*******************************************************
+     * FOOTER
+     *******************************************************/
+    footer {
+      background: #ffffff; /* White or #ffeed2 can be used for footer */
+      color: #212529;
+      padding: 40px 20px;
+      font-family: Arial, sans-serif;
+      margin-top: 40px;
+      border-top: 1px solid #d9a456; /* subtle top border */
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: #a36711; /* Primary accent for headings */
+    }
+    .footer-column ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-column ul li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    .footer-column a {
+      text-decoration: none;
+      color: #212529;
+      transition: color 0.3s;
+    }
+    .footer-column a:hover {
+      color: #a36711; /* Primary accent on hover */
+    }
+    .footer-column p {
+      margin-bottom: 10px;
+      line-height: 1.4;
+      font-size: 0.95rem;
+    }
+    .footer-icon {
+      margin-right: 8px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="fade-element">
+    <div class="container">
+      <div class="logo">Shree Krishna Dairy</div>
+      <nav>
+        <ul>
+          
+            <li><a href="/Krishna Dairy/index.html">Home</a></li>
+            <li><a href="/index.html/product ikn dex.html">Products</a></li>
+            <li><a href="/index.html/contect us index.html">Contact Us</a></li>
+            <li><a href="/index.html/about us index.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Category Buttons -->
+  <div class="category-container fade-element">
+    <button class="category-button active">All</button>
+    <button class="category-button">Milk</button>
+    <button class="category-button">Ghee</button>
+    <button class="category-button">Paneer</button>
+    <button class="category-button">
+      <a href="#curd">Curd</a>
+    </button>
+    <button class="category-button">Buttermilk</button>
+    <button class="category-button">
+      <a href="#ice cream">Ice Cream</a>
+    </button>
+    <button class="category-button">
+      <a href="#cold-drinks">Drink</a>
+    </button>
+  </div>
+
+  <!-- PRODUCTS SECTION (milk, ghee, paneer, etc.) -->
+  <section class="products-section fade-element" id="products">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <!-- Product Cards -->
+      <!-- Card 1 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.shutterstock.com/image-photo/milk-jug-pouring-into-glass-600nw-657561061.jpg" 
+          alt="Farm Fresh Homogenised Cow Milk"
+        />
+        <h3>Cow Milk</h3>
+        <div class="price-volume">60 / 1 Litar</div>
+        <div class="in-stock">In Stock</div>
+        <button class="add-btn">+</button>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi-W_Ihx0sND1DcRcnKvpQwMK-Mh6UISkAbA&s" 
+          alt="Farm Fresh Non Homogenised Cow Milk"
+        />
+        <h3>Buffalo Milk</h3>
+        <div class="price-volume">70 / 1 Liter</div>
+       
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://cdnimg.webstaurantstore.com/uploads/blog/2016/2/cheddar.jpg" 
+          alt="Cheese"
+        />
+        <h3>Cheese</h3>
+        <div class="price-volume">130 / 200 gram</div>
+        
+      </div>
+
+      <!-- Card 4 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://rukminim2.flixcart.com/image/850/1000/kigbjbk0-0/ready-mix/y/w/k/100-junnu-milk-powder-100-gm-colostrum-powder-cheek-balli-malai-original-imafy8tx84vv4kmg.jpeg?q=20&crop=false" 
+          alt="Cheek Milk"
+        />
+        <h3>Cheek Milk</h3>
+        <div class="price-volume">250 / 1 liter</div>
+       
+      </div>
+
+      <!-- Card 5 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://2.wlimg.com/product_images/bc-small/2024/10/3564848/pure-desi-ghee-1729488895-3670330.jpeg" 
+          alt="Farm Fresh Buffalo Milk"
+        />
+        <h3>Ghee</h3>
+        <div class="price-volume">600 / 1 kg</div>
+
+      </div>
+
+      <!-- Card 6 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://c8.alamy.com/comp/E5THX0/bowl-of-indian-paneer-cheese-E5THX0.jpg" 
+          alt="Paneer"
+        />
+        <h3>Paneer</h3>
+        <div class="price-volume">#150 / 1000ml</div>
+
+      </div>
+
+      <!-- Card 7 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/511ju9+hmLL._SY300_SX300_.jpg" 
+          alt="Gowardhan Ghee"
+        />
+        <h3>Gowardhan Ghee</h3>
+        <div class="price-volume">#150 / 1000ml</div>
+
+      </div>
+
+      <!-- Card 8 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://elements-resized.envatousercontent.com/envato-shoebox/f43f/0722-a13e-471f-ac35-04ba9a12090f/DSC_1611.jpg?w=1600&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=734a4f7b2d77f7129ae5139e63386a5390d1a69d31c3556d175b2477db2c0f4b"
+          alt="Lassi"
+        />
+        <h3>Lassi</h3>
+        <div class="price-volume">#600 / 500g</div>
+
+      </div>
+
+      <!-- Card 9 (Curd) -->
+      <div class="product-card fade-element" id="curd">
+        <img 
+          src="https://www.bigbasket.com/media/uploads/p/xxl/40102603_3-amul-fresh-cream-25-milk-fat-low-fat.jpg"
+          alt="Amul Fresh Cream"
+        />
+        <h3>Amul Fresh Cream</h3>
+        <div class="price-volume">#550 / 500g</div>
+
+      </div>
+
+      <!-- Card 10 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://c.ndtvimg.com/2023-02/qit4m6po_maharashtrian-style-buttermilk_625x300_07_February_23.jpg?im=FaceCrop,algorithm=dnn,width=1200,height=675" 
+          alt="Taak"
+        />
+        <h3>Taak</h3>
+        <div class="price-volume">#200 / 200g</div>
+   
+      </div>
+
+      <!-- Card 11 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://2.wlimg.com/product_images/bc-small/2024/10/3564848/yellow-butter-1729490793-3517296.jpeg" 
+          alt="Butter"
+        />
+        <h3>Butter</h3>
+        <div class="price-volume">#550 / 500g</div>
+
+      </div>
+
+      <!-- Card 12 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.jiomart.com/images/product/original/490018074/warana-keshar-elaichi-shrikhand-500-g-container-product-images-o490018074-p594266457-0-202210041442.jpg?im=Resize=(1000,1000)"
+          alt="Warana Shrikhand"
+        />
+        <h3>Warana Shrikhand</h3>
+        <div class="price-volume">#550 / 500g</div>
+
+      </div>
+
+      <!-- Card 13 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.bigbasket.com/media/uploads/p/xxl/100024570_2-chitale-dairy-full-cream-shrikhand-elaichi.jpg"
+          alt="Chitale Shrikhand"
+        />
+        <h3>Chitale Shrikhand</h3>
+        <div class="price-volume">#550 / 500g</div>
+
+      </div>
+
+      <!-- Card 14 -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.bigbasket.com/media/uploads/p/xxl/40200391_3-farmland-frozen-vegetables-green-peas.jpg"
+          alt="Frozen Greenpeas"
+        />
+        <h3>Frozen Greenpeas</h3>
+        <div class="price-volume">#550 / 500g</div>
+  
+      </div>
+
+      <!-- Card 15 (Curd) -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.chezshuchi.com/images/homemade-dahi51.JPG"
+          alt="Curd"
+        />
+        <h3>Curd</h3>
+        <div class="price-volume">#550 / 500g</div>
+
+      </div>
+
+    </div><!-- end .product-grid -->
+  </section>
+
+  <!-- ICE CREAM SECTION -->
+  <section class="products-section fade-element" id="ice cream">
+    <h2>Ice Cream</h2>
+    <div class="product-grid">
+      <!-- Ice Cream Cards -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://cdn.dotpe.in/longtail/item_thumbnails/6315874/buM8KQIm.webp" 
+          alt="Butterscotch Chocolate Oreo"
+        />
+        <h3>Butterscotch Chocolate Oreo</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://happymartz.com/admin/uploads/products/Untitled_design_(32)18.jpg" 
+          alt="Frostik"
+        />
+        <h3>Frostik</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/61tm3cRNUhL.jpg" 
+          alt="Moroccan Family Pack"
+        />
+        <h3>Moroccan Family Pack</h3>
+        <div class="price-volume"># ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/X/bxt1/M/kbxt1BRxg-OUiRi._SL640_QL75_FMwebp_.jpg" 
+          alt="Alphonoso Mango"
+        />
+        <h3>Alphonoso Mango</h3>
+        <div class="price-volume"># ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.havmor.com/sites/default/files/styles/380x273/public/products/rajbhog_combo.png?itok=S-pVtlx9" 
+          alt="Rajbhog"
+        />
+        <h3>Rajbhog</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://b.zmtcdn.com/data/dish_photos/92c/6e06a0766976d7f69244b5308586992c.jpg" 
+          alt="Black Currant"
+        />
+        <h3>Black Currant</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://firebasestorage.stagebeta.kyte.site/v0/b/kyte-7c484.appspot.com/o/BUo5T3tCjwOtosEtSTv0N7jY2ov1%2F39f4a51a-3459-493f-b7f6-7531ec136494.jpg?alt=media" 
+          alt="Jumbo Cone"
+        />
+        <h3>Jumbo Cone</h3>
+        <div class="price-volume">#ON MRP</div>
+   
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://spencers.in/media/catalog/product/1/4/1423510_1.jpg"
+          alt="Kashmiri Kulfi"
+        />
+        <h3>Kashmiri Kulfi</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/QE/DF/MY-11911830/sona-chocobar-ice-cream.png"
+          alt="Chocobar"
+        />
+        <h3>Chocobar</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.havmor.com/sites/default/files/styles/502x375/public/gallery/Zulubar%20%20with%20cover.webp?itok=9uSX8T-A"
+          alt="Dark Chocolate Zulubar"
+        />
+        <h3>Dark Chocolate Zulubar</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://cgs-cdn.sgp1.digitaloceanspaces.com/dairy-day/wp-content/uploads/2023/03/30045204/8906010913045-casatta-premium-600x356.png"
+          alt="Cassata Ice Cream"
+        />
+        <h3>Cassata Ice Cream</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/2501d4f2a282e29eac32d0a1b05ba4dd"
+          alt="Matka Kulfi"
+        />
+        <h3>Matka Kulfi</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.havmor.com/sites/default/files/styles/502x375/public/gallery/Jumbo%20Mango%20%20with%20cover.webp?itok=qkLwG3vp"
+          alt="Mango Dolly"
+        />
+        <h3>Mango Dolly</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.havmor.com/sites/default/files/styles/502x375/public/gallery/Jumbo%20Raspberry%20Dolly%20%20with%20cover.webp?itok=jquWl2jK"
+          alt="Raspberry Dolly"
+        />
+        <h3>Raspberry Dolly</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/VJ/SM/YU/SELLER-3071007/rabri-kulfi-ice-cream.png"
+          alt="Kulfi"
+        />
+        <h3>Kulfi</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.hocco.in/wp-content/uploads/2023/08/LOVE-IS-LOVE-ROLL-CUT_-1-1.png"
+          alt="Roll Cut"
+        />
+        <h3>Roll Cut</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/SELLER/Default/2023/9/340968559/ZI/GN/EM/24848586/rabadi-kulfi-ice-cream-250x250.jpg"
+          alt="Rabadi Kulfi"
+        />
+        <h3>Rabadi Kulfi</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <!-- Duplicate Chocobar if desired -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/QE/DF/MY-11911830/sona-chocobar-ice-cream.png"
+          alt="Chocobar"
+        />
+        <h3>Chocobar</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COLD DRINKS SECTION -->
+  <section class="products-section fade-element" id="cold-drinks">
+    <h2>Cold Drink</h2>
+    <div class="product-grid">
+      <!-- Cold Drink Cards -->
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/51pGxfs4w1L.jpg"
+          alt="Pepsi"
+        />
+        <h3>Pepsi</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/SELLER/Default/2021/5/GA/QN/UA/107425127/250ml-sting-energy-drink.jpg"
+          alt="Sting"
+        />
+        <h3>Sting</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://aapkabazar.co/_next/image?url=https%3A%2F%2Fimage.aapkabazar.co%2Fproduct%2F3435%2F1671629793481.png&w=3840&q=75"
+          alt="Amul Cool"
+        />
+        <h3>Amul Cool</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/HK/DP/FW/SELLER-49520187/750-ml-fanta-cold-drink.jpg"
+          alt="Fanta"
+        />
+        <h3>Fanta</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://rukminim2.flixcart.com/image/850/1000/xif0q/aerated-drink/u/o/i/-original-imagqr8ypcrbgqh4.jpeg?q=90&crop=false"
+          alt="Sprite"
+        />
+        <h3>Sprite</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/61+jGc7vLIL.jpg"
+          alt="Maaza"
+        />
+        <h3>Maaza</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://t20auctions.com/wp-content/uploads/2024/10/Frooti-Mango-Drink-3.jpg"
+          alt="Frooti"
+        />
+        <h3>Frooti</h3>
+        <div class="price-volume">#ON MRP</div>
+ 
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.jiomart.com/images/product/original/491208776/mirinda-orange-750-ml-product-images-o491208776-p491208776-2-202412230830.jpg?im=Resize=(420,420)"
+          alt="Mirinda"
+        />
+        <h3>Mirinda</h3>
+        <div class="price-volume">#ON MRP</div>
+ 
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.jiomart.com/images/product/original/491297310/thums-up-250-ml-product-images-o491297310-p491297310-0-202412121933.jpg"
+          alt="Thumbs Up"
+        />
+        <h3>Thumbs Up</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/51IRLdwmqcL.jpg"
+          alt="Limca"
+        />
+        <h3>Limca</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/71IJPpIAUUL.jpg"
+          alt="Rio"
+        />
+        <h3>Rio</h3>
+        <div class="price-volume">#ON MRP</div>
+ 
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.bigbasket.com/media/uploads/p/xxl/40141855_3-hell-energy-drink-classic.jpg"
+          alt="Hell Energy Drink"
+        />
+        <h3>Hell Energy Drink</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/51Bp30CR3IL.jpg"
+          alt="Red Bull"
+        />
+        <h3>Red Bull</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/61Xm6ofhm5L.jpg"
+          alt="Smoodh"
+        />
+        <h3>Smoodh</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.coca-cola.com/content/dam/onexp/in/en/home-page-test-img/brands/kinley/kinley%20desktop.jpg"
+          alt="Kinley"
+        />
+        <h3>Kinley</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://m.media-amazon.com/images/I/41akRAbexAL.jpg"
+          alt="Soda"
+        />
+        <h3>Soda</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://5.imimg.com/data5/SELLER/Default/2023/9/341089979/YK/PX/ND/46308104/5-l-bisleri-mineral-water-can-500x500.jpg"
+          alt="Bisleri"
+        />
+        <h3>Bisleri</h3>
+        <div class="price-volume">#ON MRP</div>
+ 
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://www.ikshop.in/wp-content/uploads/2021/06/PRODUCT_1614014486234.jpeg"
+          alt="Pulpy Orange"
+        />
+        <h3>Pulpy Orange</h3>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR8d8e1dXOIq8QFEKKfD4tPyqWywnbIuGTGg&s"
+          alt="Jeera Soda Pinch"
+        />
+        <h3>Jeera Soda Pinch</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://ayushcare.in/cdn/shop/products/OrslPlusApple.webp?v=1650461751"
+          alt="Orsl"
+        />
+        <h3>Orsl</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+
+      <div class="product-card fade-element">
+        <img 
+          src="https://soda-emporium.com/wp-content/uploads/2019/04/Breese-Blueberry.jpg"
+          alt="Blueberry Soda"
+        />
+        <h3>Blueberry Soda</h3>
+        <div class="price-volume">#ON MRP</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <!-- Products Column -->
+      <div class="footer-column">
+        <h3>Products</h3>
+        <ul>
+            <a href="/Krishna Dairy/Products index.html"><li>Milk</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Ghee</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Paneer</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Curd</li></a>
+            <a href="/Krishna Dairy/Products index.html"><li>Buttermilk</li>
+            </a>
+          
+        </ul>
+      </div>
+
+      <!-- Policy Column -->
+      <div class="footer-column">
+        <h3>Policy</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Cancellation/Refund Policy</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Us Column -->
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <!-- Address -->
+        <p>
+          <span class="footer-icon">&#128205;</span>
+          shop no 3, ush apt. indra nagar, near purnima chowk, kalyan (w), 421301
+        </p>
+        <!-- Email -->
+        <p>
+          <span class="footer-icon">&#128231;</span>
+          <a href="mailto:support@pravarshaindustries.com">veduforall@gmail.com</a>
+        </p>
+        <!-- Phone -->
+        <p>
+          <span class="footer-icon">&#128222;</span>
+          8104329223 &nbsp;|&nbsp; 882851983
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL ANIMATION SCRIPT -->
+  <script>
+    // Intersection Observer for fade-in
+    const fadeElements = document.querySelectorAll('.fade-element');
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    fadeElements.forEach(el => {
+      fadeInOnScroll.observe(el);
+    });
+  </script>
+</body>
+</html>

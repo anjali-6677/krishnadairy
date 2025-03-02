@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shree Krishna Dairy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
+    <link rel="shortcut icon" href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
+        type="image/x-icon" />
+    <style>
+        /******************************************************
+   * LIGHT-THEME COLOR PALETTE (Beige & Gold):
+   * #fff8ed (Lightest background - Very Light Beige)
+   * #ffffff (Light background container - White)
+   * #212529 (Dark text color - Almost Black - *Using standard dark text for readability, can adjust if needed*)
+   * #a36711 (Primary accent color - Dark Gold/Brown)
+   * #d9a456 (Secondary accent color - Medium Gold/Brown)
+   * #ffeed2 (Subtle background/accent - Light Beige/Cream)
+   ******************************************************/
+
+        /* --------------------------
+      BASIC RESET & BODY
+      -------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff8ed;
+            /* Lightest background - Very Light Beige */
+            color: #212529;
+            /* Dark text color - Almost Black */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /*
+    SCROLL & HOVER ANIMATIONS
+    We'll define multiple keyframes & classes for different effects:
+  */
+
+        /* Keyframes */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideRight {
+            0% {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Scroll animation classes (start hidden) */
+        .scroll-slide-up,
+        .scroll-slide-left,
+        .scroll-slide-right,
+        .scroll-zoom-in,
+        .scroll-fade-in {
+            opacity: 0;
+            /* Hidden by default, revealed on scroll */
+        }
+
+        /* .in-view triggers the animation */
+        .scroll-slide-up.in-view {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .scroll-slide-left.in-view {
+            animation: slideLeft 1s ease-out forwards;
+        }
+
+        .scroll-slide-right.in-view {
+            animation: slideRight 1s ease-out forwards;
+        }
+
+        .scroll-zoom-in.in-view {
+            animation: zoomIn 1s ease-out forwards;
+        }
+
+        .scroll-fade-in.in-view {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /*
+    ADDITIONAL HOVER EFFECTS
+    We already have basic image hover scaling. Let's enhance them:
+  */
+        .hover-rotate:hover {
+            transform: rotate(3deg) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Adjusted shadow for light theme */
+        }
+
+        /* --------------------------
+      STICKY HEADER & NAVIGATION
+      -------------------------- */
+        header {
+            background: #a36711;
+            /* Navigation background color changed to Dark Gold/Brown */
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: auto;
+        }
+
+        .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            /* Logo color changed to White for contrast on gold/brown nav */
+        }
+
+        .logo img {
+            height: 50px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            /* Navigation link color changed to White for contrast on gold/brown nav */
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffeed2;
+            /* Navigation link hover color changed to Light Beige/Cream for hover effect on gold/brown nav */
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                margin: 10px 0 0 0;
+            }
+        }
+
+        /* --------------------------
+      HERO SLIDER
+      -------------------------- */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slider {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #212529;
+            /* Dark text color - Almost Black */
+            text-align: center;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.7);
+            /* White with transparency for light theme */
+            padding: 20px;
+            border-radius: 10px;
+            /* We'll add a slight fade/slide for the hero text */
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .slide-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            /* Adjusted text shadow for light theme */
+        }
+
+        .slide-content p {
+            font-size: 24px;
+            color: #212529;
+            /* Dark text color - Almost Black */
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 3;
+        }
+
+        .slider-controls span {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #212529;
+            /* Dark text color - Almost Black */
+            padding: 0 20px;
+            user-select: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .slider-controls span:hover {
+            transform: scale(1.2);
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown on hover */
+        }
+
+        /* --------------------------
+      WELCOME SECTION
+      -------------------------- */
+        .welcome-section {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            /* Light background container - White */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .welcome-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            /* Adjusted shadow for light theme */
+        }
+
+        .left-panel {
+            background-color: #fff8ed;
+            /* Lightest background - Very Light Beige */
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .image-container {
+            background-color: #ffffff;
+            /* Light background container - White */
+            padding: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            /* Adjust shadow for light theme */
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .image-container img {
+            display: block;
+            max-width: 300px;
+            border-radius: 4px;
+        }
+
+        .right-content {
+            width: 70%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-content h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+        }
+
+        .right-content p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #212529;
+            /* Dark text color - Almost Black */
+        }
+
+        .view-more-link {
+            text-decoration: none;
+            color: #212529;
+            /* Dark text color - Almost Black */
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .view-more-link:hover {
+            transform: scale(1.05);
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown on hover */
+        }
+
+        .view-more-link .circle-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #d9a456;
+            /* Secondary accent color - Medium Gold/Brown */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-more-link:hover .circle-icon {
+            background-color: #a36711;
+            /* Primary accent color - Dark Gold/Brown on hover */
+        }
+
+        .view-more-link .circle-icon .arrow {
+            color: #fff8ed;
+            /* Arrow color - Very Light Beige for contrast on gold/brown */
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section {
+                flex-direction: column;
+            }
+
+            .left-panel,
+            .right-content {
+                width: 100%;
+            }
+
+            .left-panel {
+                padding: 20px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+        }
+
+        /* --------------------------
+      ALL FARM FRESH PRODUCTS
+      -------------------------- */
+        h2.g2 {
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+            margin-top: 40px;
+            font-size: 1.8rem;
+        }
+
+        .products-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff;
+            /* Light background container - White */
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Adjusted shadow for light theme */
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #a36711;
+            /* Primary accent color - Dark Gold/Brown border */
+            padding: 5px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
+        .product p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #212529;
+            /* Dark text color - Almost Black */
+        }
+
+        /* --------------------------
+      CARD CONTAINER
+      -------------------------- */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            /* Light background container - White */
+            border-radius: 8px;
+            padding: 20px;
+            width: calc(33.33% - 20px);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Adjusted shadow for light theme */
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #212529;
+            /* Dark text color - Almost Black */
+            margin-bottom: 15px;
+        }
+
+        .card .highlight {
+            color: #d9a456;
+            /* Secondary accent color - Medium Gold/Brown */
+            font-weight: bold;
+        }
+
+        /* --------------------------
+      TESTIMONIALS SECTION
+      -------------------------- */
+        .testimonials {
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+            margin: 40px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+            background-color: #ffffff;
+            /* Light background container - White */
+        }
+
+        .testimonials h2 {
+            font-size: 28px;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            background: #fff8ed;
+            /* Lightest background - Very Light Beige for testimonial cards */
+            color: #212529;
+            /* Dark text color - Almost Black */
+            padding: 20px;
+            border-radius: 15px;
+            width: 30%;
+            min-width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial h3 {
+            margin-bottom: 5px;
+            font-size: 22px;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+        }
+
+        .testimonial .role {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #d9a456;
+            /* Secondary accent color - Medium Gold/Brown */
+        }
+
+        /* --------------------------
+      PRODUCTS GRID (Dairy, Ice Cream, etc.)
+      -------------------------- */
+        .section-title {
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+            font-size: 2rem;
+            margin: 40px 0 20px;
+        }
+
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-item {
+            background: #ffffff;
+            /* Light background container - White */
+            padding: 20px;
+            border-radius: 8px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Adjusted shadow for light theme */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Adjusted shadow for light theme */
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item h3 {
+            margin-top: 15px;
+            font-size: 24px;
+            color: #212529;
+            /* Dark text color - Almost Black */
+        }
+
+        /* --------------------------
+      PRICE TABLE SECTION
+      -------------------------- */
+        .price-table-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px 20px;
+        }
+
+        .price-table-section h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            /* We'll keep a subtle fade in on table load: */
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        thead th {
+            background-color: #ffffff;
+            /* Light background container - White */
+            color: #212529;
+            /* Dark text color - Almost Black */
+            padding: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #a36711;
+            /* Primary accent color - Dark Gold/Brown border */
+        }
+
+        tbody td {
+            padding: 15px;
+            border-bottom: 1px solid #d9a456;
+            /* Secondary accent color - Medium Gold/Brown border */
+            font-size: 1rem;
+            color: #212529;
+            /* Dark text color - Almost Black */
+        }
+
+        tbody tr {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #ffeed2;
+            /* Subtle background/accent - Light Beige/Cream on row hover */
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 600px) {
+
+            thead th,
+            tbody td {
+                padding: 10px;
+            }
+
+            .price-table-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* --------------------------
+      FOOTER
+      -------------------------- */
+        footer {
+            background: #ffffff;
+            /* Light background container - White */
+            color: #212529;
+            /* Dark text color - Almost Black */
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown */
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            color: #212529;
+            /* Dark text color - Almost Black */
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #a36711;
+            /* Primary accent color - Dark Gold/Brown on hover */
+        }
+
+        .footer-column p {
+            margin-bottom: 10px;
+            line-height: 1.4;
+            font-size: 0.95rem;
+        }
+
+        .footer-icon {
+            margin-right: 8px;
+            font-size: 1rem;
+            color: #d9a456;
+            /* Secondary accent color - Medium Gold/Brown */
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #777;
+            /* Slightly darker link color for footer in light theme */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #212529;
+            /* Dark text color on footer link hover */
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <!-- =====================
+       Sticky Nav Section
+       ===================== -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/product ikn dex.html">Products</a></li>
+                    <li><a href="/contect us index.html">Contact Us</a></li>
+                    <li><a href="/about us index.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- =====================
+       Hero Slider Section
+       ===================== -->
+    <section class="hero" id="hero">
+        <div class="slider">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <img src="https://www.glanbianutritionals.com/sites/default/files/styles/hero_wide/public/field/hero/child-looking-at-milk.jpg?itok=MZhA2WyI"
+                    alt="Slide 1" />
+                <div class="slide-content">
+                    <h1>Welcome to Shree Krishna Dairy</h1>
+                    <p>Excellence in Dairy Since 1975</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://www.marianos.com/content/v2/binary/image/blog/health/types-of-milk/imageset_types-of-milk--2_types-of-milk-article-hero-dsk-1280x424_p8-kh-article-tablescapes_p_23-tkc-0112.jpg"
+                    alt="Slide 2" />
+                <div class="slide-content">
+                    <h1>Fresh Milk & Curd</h1>
+                    <p>Quality and Purity Guaranteed</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://cgs-cdn.sgp1.digitaloceanspaces.com/dairy-day/wp-content/uploads/2023/03/03052444/dd-hp-banner-sticks-1600x668.jpg"
+                    alt="Slide 3" />
+                <div class="slide-content">
+                    <h1>Delicious Ice Cream</h1>
+                    <p>Taste the Tradition</p>
+                </div>
+            </div>
+            <!-- Slider Navigation Controls -->
+            <div class="slider-controls">
+                <span class="prev">&#10094;</span>
+                <span class="next">&#10095;</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================
+       Welcome Section
+       ===================== -->
+    <section class="welcome-section scroll-slide-up">
+        <div class="left-panel">
+            <div class="image-container hover-rotate">
+                <img src="https://catalog.wlimg.com/about-image/about-03.jpg" alt="Meeting discussion" />
+            </div>
+        </div>
+        <div class="right-content">
+            <h1>Welcome to our Website</h1>
+            <p>
+                Welcome to Shree Krishna Dairy. Established in 1975, we’ve proudly served
+                our community for nearly half a century with high‐quality dairy products.
+                From fresh milk, curd, ghee, mava, and lassi to our wide range of ice creams
+                and cold drinks, each item is crafted with tradition, care, and innovation.
+                We go the extra mile by providing door‐to‐door delivery, ensuring you can
+                enjoy our products in the comfort of your home. Whether you’re looking for
+                a nutritious start to your day or a sweet treat on a hot afternoon, Shree
+                Krishna Dairy promises freshness and convenience with every order.
+            </p>
+            <a href="/Krishna dairy/contect Us index.html" class="view-more-link">
+                <div class="circle-icon">
+                    <span class="arrow">&#9658;</span>
+                </div>
+                View more
+            </a>
+        </div>
+    </section>
+
+    <!-- =====================
+       All Farm Fresh Products
+       ===================== -->
+    <h2 class="g2 scroll-fade-in">All Farm Fresh Products At One Place...</h2>
+    <div class="products-container scroll-slide-left">
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://i.postimg.cc/YSRvLh9d/Screenshot-2025-02-25-230031.png" alt="Milk" />
+                <p>Milk</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://i0.wp.com/florafoods.in/wp-content/uploads/2023/05/flora-desi-ghee-01-.png?fit=800%2C800&ssl=1"
+                    alt="Ghee" />
+                <p>Ghee</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://i.postimg.cc/MGmQ09sb/Screenshot-2025-02-25-225900.png" alt="Paneer" />
+                <p>Paneer</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://i.postimg.cc/PxFNK91Z/Screenshot-2025-02-25-230117.png" alt="Curd" />
+                <p>Curd</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://i.postimg.cc/59T6zc4W/Screenshot-2025-02-25-230227.png" alt="Buttermilk" />
+                <p>Buttermilk</p>
+            </a>
+        </div>
+        <div class="product">
+            <a href="/Krishna Dairy/Products index.html">
+                <img src="https://www.shutterstock.com/image-illustration/cheese-illustration-on-beige-background-600nw-2513136663.jpg"
+                    alt="Combo Products" />
+                <p>Chees</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- =====================
+       Price Table Section
+       ===================== -->
+       <div class="container price-table-section scroll-slide-up">
+        <h1>Milk Products Price List</h1>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Weight</th>
+                        <th>Price (Rs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cow Milk</td>
+                        <td>1 liter</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>Buffalo Milk</td>
+                        <td>1 liter</td>
+                        <td>70</td>
+                    </tr>
+                    <tr>
+                        <td>Paneer</td>
+                        <td>1 kg</td>
+                        <td>320</td>
+                    </tr>
+                    <tr>
+                        <td>Curd</td>
+                        <td>1 kg</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>Mava</td>
+                        <td>1 kg</td>
+                        <td>320</td>
+                    </tr>
+                    <tr>
+                        <td>Ghee</td>
+                        <td>250 gram</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>Taak</td>
+                        <td>1 liter</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Cheese</td>
+                        <td>200 gram</td>
+                        <td>130</td>
+                    </tr>
+                    <tr>
+                        <td>Lassi</td>
+                        <td>1 glass</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Shrikhand</td>
+                        <td>Small box</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>Amul Fresh Cream</td>
+                        <td>per pack</td>
+                        <td>68</td>
+                    </tr>
+                    <tr>
+                        <td>Butter</td>
+                        <td>1 pack</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <td>Frozen Green Peas</td>
+                        <td>1 kg</td>
+                        <td>110</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- =====================
+       Testimonials Section
+       ===================== -->
+    <section class="testimonials scroll-zoom-in">
+        <h2>What The Clients Say About Us</h2>
+        <div class="testimonial-container">
+            <div class="testimonial hover-rotate">
+                <h3>Amit Kumar</h3>
+                <p class="role">Customer</p>
+                <p>
+                    Shree Krishna Dairy consistently delivers fresh, high-quality products
+                    with warm, friendly service that makes every visit a delight...
+                </p>
+            </div>
+            <div class="testimonial hover-rotate">
+                <h3>Ankit Poddar</h3>
+                <p class="role">Customer</p>
+                <p>
+                    I always leave with a smile thanks to their excellent service and
+                    top-notch milk quality.
+                </p>
+            </div>
+            <div class="testimonial hover-rotate">
+                <h3>Mohit Sharma</h3>
+                <p class="role">Customer</p>
+                <p>
+                    It's refreshing to see an owner so committed to customer satisfaction
+                    and product excellence...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================
+       Dairy Products Section
+       ===================== -->
+    <section id="products" class="scroll-fade-in">
+        <div class="container">
+            <h2 class="section-title">Our Dairy Products</h2>
+            <div class="products-grid">
+                <div class="product-item hover-rotate">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/004-soymilk.jpg/800px-004-soymilk.jpg"
+                        alt="Milk" />
+                    <h3>Milk</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://www.archanaskitchen.com/images/archanaskitchen/BasicRecipes_HOW_TO/How_To_Make_Fresh_Homemade_Yogurt_Curd.jpg"
+                        alt="Curd" />
+                    <h3>Curd</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPgJEZB-0IOHximFSW8_WUGfAmQubMCLGNzw&s"
+                        alt="Ghee" />
+                    <h3>Ghee</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5YZ7uts2gSQ7rTJIx3qUpcVmaW7yQCMShLA&s"
+                        alt="Mava" />
+                    <h3>Cheese</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwQlIz_DnMJ-5w_dErD9gNV_khWZuLHU3q0w&s"
+                        alt="Lassi" />
+                    <h3>Lassi</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://2.wlimg.com/product_images/bc-small/2024/10/3564848/yellow-butter-1729490793-3517296.jpeg"
+                        alt="Butter" />
+                    <h3>Butter</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://c8.alamy.com/comp/E5THX0/bowl-of-indian-paneer-cheese-E5THX0.jpg" alt="Paneer" />
+                    <h3>Paneer</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================
+       Ice Cream Section
+       ===================== -->
+    <section id="icecream" class="scroll-slide-left">
+        <div class="container">
+            <h1 class="section-title">Ice Cream</h1>
+            <div class="products-grid">
+                <div class="product-item hover-rotate">
+                    <img src="https://media.istockphoto.com/id/822111940/photo/vanilla-ice-cream-scoops-in-white-bowl.jpg?s=612x612&w=0&k=20&c=kIBoFsqChLB2fHhQF1EFqkhu1tMz2n_Db3AyaaytIQM="
+                        alt="Vanilla Ice Cream" />
+                    <h3>Vanilla</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://media.istockphoto.com/id/153560334/photo/delicious-gourmet-chocolate-ice-cream.jpg?s=612x612&w=0&k=20&c=0V7LrfZGBHBddNmcOCCOza-mhrTV_ONtgqgK_AxExWU="
+                        alt="Chocolate Ice Cream" />
+                    <h3>Chocolate</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://aplantifulpath.com/wp-content/uploads/2019/08/Strawberry-Ice-Cream-1.jpg"
+                        alt="Strawberry Ice Cream" />
+                    <h3>Strawberry</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSesQZiS4a8HIABM4V_j84W5AZae3G3T6Xr_A&s"
+                        alt="Mango Ice Cream" />
+                    <h3>Mango</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================
+       Cold Drinks Section
+       ===================== -->
+    <section id="cold-drinks" class="scroll-zoom-in">
+        <div class="container">
+            <h2 class="section-title">Cold Drinks</h2>
+            <div class="products-grid">
+                <div class="product-item hover-rotate">
+                    <img src="https://citma.shorthandstories.com/6e7d13ef-02b7-42af-9d16-cce70df03f84/assets/G3zfKMJ2tq/shorthand-images5-2560x1440.jpg"
+                        alt="Cola" />
+                    <h3>Cola</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://cdn.loveandlemons.com/wp-content/uploads/2022/06/lemonade.jpg" alt="Lemonade" />
+                    <h3>Lemonade</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://realfood.tesco.com/media/images/SMOOTHIE-mixedfruitpunch-He-beef6661-8d12-49dc-9357-3d09e4cffb0a-0-472x310.jpg"
+                        alt="Fruit Punch" />
+                    <h3>Fruit Punch</h3>
+                </div>
+                <div class="product-item hover-rotate">
+                    <img src="https://media.istockphoto.com/id/915657126/photo/orange-juice-glass-jar-shot-on-rustic-wooden-table.jpg?s=612x612&w=0&k=20&c=rlj0FwRDQOAV_j8-MUQntzIj8fZegbMewj22nNXxiYc="
+                        alt="Orange Drink" />
+                    <h3>Orange Drink</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================
+       Card Container
+       ===================== -->
+    <div class="card-container scroll-slide-right">
+        <div class="card">
+            <h2>Legal Compliance</h2>
+            <p>
+                At <span class="highlight">Shree Krishna Dairy</span>, we strictly ensure
+                compliance with all legal norms, whether for our products or brands in the
+                market. We understand its importance and guarantee its fulfilment.
+            </p>
+        </div>
+        <div class="card">
+            <h2>Food Safety Guarantee</h2>
+            <p>
+                We believe in the philosophy of <span class="highlight">"Consumer First"</span>.
+                As part of our corporate responsibility, we ensure that food safety is our top
+                priority. All our plants have FSSAI licenses, certifying our commitment to food
+                safety and dependability.
+            </p>
+        </div>
+        <div class="card">
+            <h2>Consumer Preference</h2>
+            <p>
+                <span class="highlight">Shree Krishna Dairy</span> has a strong focus on its
+                consumers. We go the extra mile to provide consistent quality products that
+                cater to their organoleptic preferences. We not only aim to give consumers the
+                best but also understand their needs through robust customer-connect programs.
+            </p>
+        </div>
+        <div class="card">
+            <h2>Customer Satisfaction</h2>
+            <p>
+                Our customer satisfaction comes not only from consistent quality products but
+                also from our customer care services, which are readily available to provide
+                product-related information and address any queries or concerns.
+            </p>
+        </div>
+        <div class="card">
+            <h2>Supplier Assurance</h2>
+            <p>
+                We strive to ensure consistent quality products with conforming purity, made
+                possible through our own
+                <span class="highlight">Shree Krishna Dairy Distribution Centre</span>, agents,
+                and retailers. We ensure on-time deliveries so that our products are available
+                to consumers 24/7.
+            </p>
+        </div>
+        <div class="card">
+            <h2>Quality at Best Price</h2>
+            <p>
+                Being in the dairy market, we ensure our products are not only the healthiest
+                and tastiest but also affordable for everyone. Quality is not something we
+                strive for; it’s something we guarantee with consistency.
+            </p>
+        </div>
+    </div>
+
+    
+
+    <!-- =====================
+       Footer
+       ===================== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Products</h3>
+                <ul>
+                    <a href="/Krishna Dairy/Products index.html">
+                        <li>Milk</li>
+                    </a>
+                    <a href="/Krishna Dairy/Products index.html">
+                        <li>Ghee</li>
+                    </a>
+                    <a href="/Krishna Dairy/Products index.html">
+                        <li>Paneer</li>
+                    </a>
+                    <a href="/Krishna Dairy/Products index.html">
+                        <li>Curd</li>
+                    </a>
+                    <a href="/Krishna Dairy/Products index.htmll">
+                        <li>Buttermilk</li>
+                    </a>
+
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Policy</h3>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Cancellation/Refund Policy</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>
+                    <span class="footer-icon">&#128205;</span>
+                    shop no 3, usha apt. indra nagar, near purnima cholwk, kalyan (w), 421301
+                </p>
+                <p>
+                    <span class="footer-icon">&#128231;</span>
+                    <a href="mailto:veduforall@gmail.com">veduforall@gmail.com</a>
+                </p>
+                <p>
+                    <span class="footer-icon">&#128222;</span>
+                    8104329223 &nbsp;|&nbsp; 882851983
+                </p>
+            </div>
+        </div>
+        <p>&copy; 2024 Shree Krishna Dairy. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms & Conditions</a>
+        </p>
+    </footer>
+
+    <!-- =====================
+       Slider & Scroll Animation JavaScript
+       ===================== -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        let currentSlide = 0;
+        let slideInterval = setInterval(nextSlide, 5000);
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function prevSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if (next && prev) {
+            next.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                nextSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+
+            prev.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                prevSlide();
+                slideInterval = setInterval(nextSlide, 5000);
+            });
+        }
+
+        const scrollElements = document.querySelectorAll(
+            '.scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-zoom-in, .scroll-fade-in'
+        );
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        scrollElements.forEach(el => {
+            scrollObserver.observe(el);
+        });
+    </script>
+</body>
+
+</html>
