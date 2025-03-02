@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Krishna - Contact</title>
-  <link
-    rel="shortcut icon"
-    href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
-    type="image/x-icon"
-  />
+  <link rel="shortcut icon" href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png" type="image/x-icon" />
   <style>
     /******************************************************
      * LIGHT-THEME COLOR PALETTE (Beige & Gold):
@@ -26,41 +23,59 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff8ed; /* Very Light Beige */
-      color: #212529; /* Dark text color */
+      background-color: #fff8ed;
+      /* Very Light Beige */
+      color: #212529;
+      /* Dark text color */
     }
+
     a {
-      color: #a36711; /* Primary accent color */
+      color: #a36711;
+      /* Primary accent color */
       text-decoration: none;
     }
+
     a:hover {
-      color: #d9a456; /* Secondary accent color */
+      color: #d9a456;
+      /* Secondary accent color */
     }
 
     /* Header */
     header {
-      background-color: #a36711; /* Primary accent for header background */
+      background-color: #a36711;
+      /* Primary accent for header background */
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .header-logo {
       font-size: 24px;
       font-weight: bold;
       color: #ffeed2;
     }
-    .nav-menu {
+
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 20px;
+      align-items: center;
     }
-    .nav-menu a {
-      font-weight: 500;
-      transition: color 0.3s;
-      color: #ffeed2;
+    nav ul li {
+      padding: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #d9a456; /* Dark text */
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffeed2; /* Primary accent on hover */
+      transform: translateY(-2px);
     }
 
     /* Hero/Banner Section */
@@ -73,23 +88,30 @@
       align-items: center;
       justify-content: center;
     }
+
     .hero::before {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: rgba(0, 0, 0, 0.4);
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
       color: #ffffff;
     }
+
     .hero-content h1 {
       font-size: 48px;
       margin-bottom: 10px;
     }
+
     .hero-content p {
       font-size: 16px;
     }
@@ -106,11 +128,13 @@
       text-align: center;
       margin-bottom: 40px;
     }
+
     .section-title h2 {
       font-size: 32px;
       margin-bottom: 10px;
       color: #a36711;
     }
+
     .section-title p {
       font-size: 16px;
       color: #212529;
@@ -122,6 +146,7 @@
       gap: 40px;
       flex-wrap: wrap;
     }
+
     .contact-left,
     .contact-right {
       flex: 1;
@@ -130,19 +155,23 @@
 
     /* Contact Left (Form) */
     .contact-form {
-      background-color: #ffffff; /* White container */
+      background-color: #ffffff;
+      /* White container */
       padding: 20px;
       border-radius: 4px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     .contact-form h3 {
       margin-bottom: 20px;
       color: #a36711;
     }
+
     .contact-form p {
       margin-bottom: 20px;
       line-height: 1.6;
     }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -153,6 +182,7 @@
       font-size: 14px;
       color: #212529;
     }
+
     .contact-form button {
       background-color: #a36711;
       color: #ffffff;
@@ -163,6 +193,7 @@
       font-size: 16px;
       transition: background 0.3s;
     }
+
     .contact-form button:hover {
       background-color: #d9a456;
     }
@@ -172,29 +203,36 @@
       background-color: #ffffff;
       padding: 20px;
       border-radius: 4px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     .contact-details h3 {
       margin-bottom: 20px;
       color: #a36711;
     }
+
     .contact-details p {
       margin-bottom: 10px;
       line-height: 1.6;
     }
+
     .contact-details p span {
       font-weight: bold;
     }
+
     .map-container {
       margin-top: 20px;
       width: 100%;
-      background-color: #ffeed2; /* Subtle background */
+      background-color: #ffeed2;
+      /* Subtle background */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px; /* some padding around the image */
+      padding: 10px;
+      /* some padding around the image */
       border-radius: 4px;
     }
+
     .map-container img {
       max-width: 100%;
       height: auto;
@@ -205,10 +243,12 @@
     /* Footer */
     footer {
       background-color: #ffffff;
-      color: #ffffff; /* This will be overridden by child elements if needed */
+      color: #ffffff;
+      /* This will be overridden by child elements if needed */
       padding: 40px 20px;
       margin-top: 40px;
     }
+
     .footer-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -216,28 +256,35 @@
       flex-wrap: wrap;
       gap: 40px;
     }
+
     .footer-column {
       flex: 1;
       min-width: 250px;
     }
+
     .footer-column h4 {
       margin-bottom: 20px;
       color: #a36711;
     }
+
     .footer-column p,
     .footer-column li {
       font-size: 14px;
       margin-bottom: 10px;
-      color: #212529; /* Dark text in footer */
+      color: #212529;
+      /* Dark text in footer */
     }
+
     .footer-column ul {
       list-style: none;
       padding: 0;
     }
+
     .social-icons {
       display: flex;
       gap: 10px;
     }
+
     .social-icons a {
       display: inline-block;
       width: 32px;
@@ -249,15 +296,19 @@
       line-height: 32px;
       transition: background 0.3s;
     }
+
     .social-icons a:hover {
       background-color: #0b0b0b;
     }
+
     .footer-bottom {
       text-align: center;
       margin-top: 20px;
       font-size: 14px;
-      color: #212529; /* Dark text for the bottom area */
+      color: #212529;
+      /* Dark text for the bottom area */
     }
+
     .footer-bottom a {
       color: #a36711;
     }
@@ -267,34 +318,43 @@
       .hero {
         height: 200px;
       }
+
       .hero-content h1 {
         font-size: 32px;
       }
+
       .section-title h2 {
         font-size: 26px;
       }
+
       .contact-section {
         flex-direction: column;
       }
+
       .footer-container {
         flex-direction: column;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <div class="header-logo">Shree Krishna Dairy</div>
     <nav>
-      <div class="nav-menu">
+      <ul>
         <li><a href="/index.html">Home</a></li>
-                    <li><a href="/product ikn dex.html">Products</a></li>
-                    <li><a href="/contect us index.html">Contact Us</a></li>
-                    <li><a href="/about us index.html">About Us</a></li>
+        <li><a href="/product ikn dex.html">Products</a></li>
+        <li><a href="/contect us index.html">Contact Us</a></li>
+        <li><a href="/about us index.html">About Us</a></li>
+      </ul>
+      
+        
         
 
-      </div>
+
+      
     </nav>
   </header>
 
@@ -317,7 +377,7 @@
 
     <!-- Contact Section -->
     <div class="contact-section">
-      
+
       <!-- Left: Contact Form -->
       <div class="contact-left">
         <div class="contact-form">
@@ -343,20 +403,14 @@
           </p>
           <p><span>Call Us:</span> +91 8104329223</p>
           <p>
-            <span>Mail Us:</span> 
+            <span>Mail Us:</span>
             <a href="mailto:veduforall@gmail.com">veduforall@gmail.com</a>
           </p>
           <div class="map-container">
             <!-- Clickable Image linking to Google Maps -->
-            <a
-              href="https://www.google.com/maps/place/Shree+Krishna+Dairy+(Since+1970)+Ushanagar/@19.2431616,73.1474586,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7954e2f1b4045:0x3d10335a44152a4d!8m2!3d19.2431616!4d73.1474586!16s%2Fg%2F11x2k96zqm?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://i.postimg.cc/TwXddHh1/Screenshot-2025-02-28-173049.png"
-                alt="Map location screenshot"
-              />
+            <a href="https://www.google.com/maps/place/Shree+Krishna+Dairy+(Since+1970)+Ushanagar/@19.2431616,73.1474586,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7954e2f1b4045:0x3d10335a44152a4d!8m2!3d19.2431616!4d73.1474586!16s%2Fg%2F11x2k96zqm?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank" rel="noopener noreferrer">
+              <img src="https://i.postimg.cc/TwXddHh1/Screenshot-2025-02-28-173049.png" alt="Map location screenshot" />
             </a>
           </div>
         </div>
@@ -383,10 +437,10 @@
       <div class="footer-column">
         <h4>Quick Links</h4>
         <ul>
-            <li><a href="/Krishna Dairy/index.html">Home</a></li>
-            <li><a href="/index.html/product ikn dex.html">Products</a></li>
-            <li><a href="/index.html/contect us index.html">Contact Us</a></li>
-            <li><a href="/index.html/about us index.html">About Us</a></li>
+          <li><a href="/Krishna Dairy/index.html">Home</a></li>
+          <li><a href="/index.html/product ikn dex.html">Products</a></li>
+          <li><a href="/index.html/contect us index.html">Contact Us</a></li>
+          <li><a href="/index.html/about us index.html">About Us</a></li>
         </ul>
       </div>
       <!-- Business Hours -->
@@ -405,11 +459,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © Shree Krishna Dairy, All Right Reserved. 
+      © Shree Krishna Dairy, All Right Reserved.
       <br />
-      
+
     </div>
   </footer>
 
 </body>
+
 </html>
