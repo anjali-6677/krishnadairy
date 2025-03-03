@@ -3,11 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Product</title>
-  <link
-    rel="shortcut icon"
-    href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
-    type="image/x-icon"
-  >
+  <link rel="shortcut icon" href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for mobile responsiveness -->
   <style>
     /*******************************************************
      * LIGHT-THEME COLOR PALETTE (Beige & Gold):
@@ -28,15 +25,12 @@
 
     body {
       font-family: 'Roboto', sans-serif, Arial, sans-serif;
-      background-color: #fff8ed;  /* Lightest background */
-      color: #212529;             /* Dark text color */
+      background-color: #fff8ed;
+      color: #212529;
       line-height: 1.6;
-      overflow-x: hidden;         /* Prevent horizontal scroll */
+      overflow-x: hidden;
     }
 
-    /*******************************************************
-     * FADE-IN ON SCROLL
-     *******************************************************/
     .fade-element {
       opacity: 0;
       transform: translateY(20px);
@@ -47,11 +41,8 @@
       transform: translateY(0);
     }
 
-    /*******************************************************
-     * HEADER & NAVIGATION
-     *******************************************************/
     header {
-      background-color: #a36711; /* White header container */
+      background-color: #a36711;
       padding: 10px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
@@ -69,7 +60,7 @@
     .logo {
       font-size: 1.5rem;
       font-weight: bold;
-      color: #ffeed2; /* Primary accent color for logo */
+      color: #ffeed2;
     }
     nav ul {
       list-style: none;
@@ -81,66 +72,64 @@
     }
     nav ul li a {
       text-decoration: none;
-      color: #d9a456; /* Dark text */
+      color: #d9a456;
       transition: color 0.3s, transform 0.3s;
     }
     nav ul li a:hover {
-      color: #ffeed2; /* Primary accent on hover */
+      color: #ffeed2;
       transform: translateY(-2px);
     }
 
-    /*******************************************************
-     * CATEGORY (PILL) BUTTONS
-     *******************************************************/
+    /* Mobile Navigation Toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #d9a456;
+      cursor: pointer;
+    }
+
     .category-container {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       padding: 20px;
-      justify-content: center; /* center them horizontally */
-      background-color: #ffffff; /* White container for contrast */
+      justify-content: center;
+      background-color: #ffffff;
     }
     .category-button {
-      background-color: #ffeed2; /* Subtle background color for buttons */
+      background-color: #ffeed2;
       color: #212529;
-      border: 1px solid #d9a456; /* Secondary accent as border */
-      border-radius: 20px;       /* pill shape */
+      border: 1px solid #d9a456;
+      border-radius: 20px;
       padding: 10px 20px;
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition:
-        background-color 0.3s,
-        color 0.3s,
-        box-shadow 0.3s,
-        transform 0.3s;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
     .category-button a {
-      color: inherit; /* Inherit button text color */
+      color: inherit;
       text-decoration: none;
     }
-    /* Active (selected) button */
     .category-button.active {
-      background-color: #a36711; /* Primary accent for active */
-      color: #ffffff;            /* White text for contrast */
+      background-color: #a36711;
+      color: #ffffff;
       border-color: #a36711;
     }
-    /* Hover effect */
     .category-button:hover {
       transform: translateY(-2px);
-      background-color: #d9a456; /* Secondary accent on hover */
+      background-color: #d9a456;
       color: #212529;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    /*******************************************************
-     * PRODUCTS SECTION
-     *******************************************************/
     .products-section {
       max-width: 1200px;
       margin: 0 auto;
       padding: 40px 20px;
-      background-color: #ffffff; /* White container for product section */
+      background-color: #ffffff;
       margin-top: 20px;
       margin-bottom: 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -150,7 +139,7 @@
       text-align: center;
       margin-bottom: 30px;
       font-size: 2rem;
-      color: #a36711; /* Primary accent for headings */
+      color: #a36711;
       text-transform: uppercase;
       letter-spacing: 1px;
       position: relative;
@@ -160,21 +149,17 @@
       display: block;
       width: 80px;
       height: 3px;
-      background: #d9a456; /* Secondary accent color */
+      background: #d9a456;
       margin: 10px auto 0;
       border-radius: 2px;
     }
-
-    /* Product grid layout */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
-
-    /* Product Card */
     .product-card {
-      background-color: #ffeed2; /* Subtle background for cards */
+      background-color: #ffeed2;
       border-radius: 8px;
       padding: 20px;
       text-align: center;
@@ -200,8 +185,8 @@
     .product-card h3 {
       font-size: 1rem;
       margin-bottom: 8px;
-      color: #212529; /* Dark text */
-      min-height: 45px; /* helps align card heights if titles vary */
+      color: #212529;
+      min-height: 45px;
     }
     .product-card .price-volume {
       font-size: 0.9rem;
@@ -210,11 +195,9 @@
     }
     .product-card .in-stock {
       font-weight: 600;
-      color: #28a745; /* green text for "In Stock" indicator */
+      color: #28a745;
       margin-bottom: 10px;
     }
-
-    /* Add Button (the plus sign) */
     .add-btn {
       display: inline-flex;
       align-items: center;
@@ -222,30 +205,27 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      border: 2px solid #a36711; /* Primary accent border */
+      border: 2px solid #a36711;
       background-color: #ffeed2;
-      color: #a36711; /* Primary accent text */
+      color: #a36711;
       font-size: 20px;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s;
     }
     .add-btn:hover {
-      background-color: #a36711; /* Primary accent on hover */
-      color: #ffffff;           /* White text on hover */
+      background-color: #a36711;
+      color: #ffffff;
       transform: scale(1.1);
     }
 
-    /*******************************************************
-     * FOOTER
-     *******************************************************/
     footer {
-      background: #ffffff; /* White or #ffeed2 can be used for footer */
+      background: #ffffff;
       color: #212529;
       padding: 40px 20px;
       font-family: Arial, sans-serif;
       margin-top: 40px;
-      border-top: 1px solid #d9a456; /* subtle top border */
+      border-top: 1px solid #d9a456;
     }
     .footer-container {
       max-width: 1200px;
@@ -262,7 +242,7 @@
     .footer-column h3 {
       font-size: 1.2rem;
       margin-bottom: 16px;
-      color: #a36711; /* Primary accent for headings */
+      color: #a36711;
     }
     .footer-column ul {
       list-style-type: none;
@@ -279,7 +259,7 @@
       transition: color 0.3s;
     }
     .footer-column a:hover {
-      color: #a36711; /* Primary accent on hover */
+      color: #a36711;
     }
     .footer-column p {
       margin-bottom: 10px;
@@ -291,22 +271,113 @@
       font-size: 1rem;
     }
 
+    /* Mobile Responsive Adjustments */
     @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 0 15px;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+      }
+      .category-container {
+        flex-direction: column;
+        padding: 15px;
+        gap: 8px;
+      }
+      .category-button {
+        width: 100%;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      .products-section {
+        padding: 20px 15px;
+        margin: 10px;
+      }
+      .products-section h2 {
+        font-size: 1.5rem;
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+      }
+      .product-card {
+        padding: 15px;
+      }
+      .product-card img {
+        width: 80px;
+      }
+      .product-card h3 {
+        font-size: 0.9rem;
+        min-height: 40px;
+      }
       .footer-container {
         flex-direction: column;
         gap: 20px;
       }
     }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.2rem;
+      }
+      .products-section h2 {
+        font-size: 1.25rem;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .product-card {
+        padding: 12px;
+      }
+      .product-card img {
+        width: 70px;
+      }
+      .add-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      body {
+        font-size: 14px;
+      }
+      .logo {
+        font-size: 1rem;
+      }
+      .products-section h2 {
+        font-size: 1.1rem;
+      }
+      .product-card img {
+        width: 60px;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="fade-element">
     <div class="container">
       <div class="logo">Shree Krishna Dairy</div>
+      <button class="nav-toggle">☰</button>
       <nav>
         <ul>
-          
           <li><a href="/index.html">Home</a></li>
           <li><a href="/product ikn dex.html">Products</a></li>
           <li><a href="/contect us index.html">Contact Us</a></li>
@@ -316,42 +387,30 @@
     </div>
   </header>
 
-  <!-- Category Buttons -->
   <div class="category-container fade-element">
     <button class="category-button active">All</button>
     <button class="category-button">Milk</button>
     <button class="category-button">Ghee</button>
     <button class="category-button">Paneer</button>
-    <button class="category-button">
-      <a href="#curd">Curd</a>
-    </button>
+    <button class="category-button"><a href="#curd">Curd</a></button>
     <button class="category-button">Buttermilk</button>
-    <button class="category-button">
-      <a href="#ice cream">Ice Cream</a>
-    </button>
-    <button class="category-button">
-      <a href="#cold-drinks">Drink</a>
-    </button>
+    <button class="category-button"><a href="#ice cream">Ice Cream</a></button>
+    <button class="category-button"><a href="#cold-drinks">Drink</a></button>
   </div>
 
-  <!-- PRODUCTS SECTION (milk, ghee, paneer, etc.) -->
   <section class="products-section fade-element" id="products">
     <h2>Our Products</h2>
     <div class="product-grid">
-      <!-- Product Cards -->
-      <!-- Card 1 -->
+      <!-- Your existing product cards remain unchanged -->
       <div class="product-card fade-element">
-        <img 
-          src="https://www.shutterstock.com/image-photo/milk-jug-pouring-into-glass-600nw-657561061.jpg" 
-          alt="Farm Fresh Homogenised Cow Milk"
-        />
+        <img src="https://www.shutterstock.com/image-photo/milk-jug-pouring-into-glass-600nw-657561061.jpg" alt="Farm Fresh Homogenised Cow Milk"/>
         <h3>Cow Milk</h3>
         <div class="price-volume">60 / 1 Litar</div>
         <div class="in-stock">In Stock</div>
         <button class="add-btn">+</button>
       </div>
-
-      <!-- Card 2 -->
+      <!-- ... other product cards ... -->
+       <!-- Card 2 -->
       <div class="product-card fade-element">
         <img 
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi-W_Ihx0sND1DcRcnKvpQwMK-Mh6UISkAbA&s" 
@@ -409,7 +468,7 @@
       <!-- Card 7 -->
       <div class="product-card fade-element">
         <img 
-          src="https://m.media-amazon.com/images/I/511ju9+hmLL._SY300_SX300_.jpg" 
+          src="https://m.media-amazon.com/images/I/511ju9+hmLL.SY300_SX300.jpg" 
           alt="Gowardhan Ghee"
         />
         <h3>Gowardhan Ghee</h3>
@@ -506,23 +565,19 @@
       </div>
 
     </div><!-- end .product-grid -->
+    </div>
   </section>
 
-  <!-- ICE CREAM SECTION -->
   <section class="products-section fade-element" id="ice cream">
     <h2>Ice Cream</h2>
     <div class="product-grid">
-      <!-- Ice Cream Cards -->
+      <!-- Your existing ice cream cards remain unchanged -->
       <div class="product-card fade-element">
-        <img 
-          src="https://cdn.dotpe.in/longtail/item_thumbnails/6315874/buM8KQIm.webp" 
-          alt="Butterscotch Chocolate Oreo"
-        />
+        <img src="https://cdn.dotpe.in/longtail/item_thumbnails/6315874/buM8KQIm.webp" alt="Butterscotch Chocolate Oreo"/>
         <h3>Butterscotch Chocolate Oreo</h3>
         <div class="price-volume">#ON MRP</div>
-
       </div>
-
+      <!-- ... other ice cream cards ... -->
       <div class="product-card fade-element">
         <img 
           src="https://happymartz.com/admin/uploads/products/Untitled_design_(32)18.jpg" 
@@ -545,7 +600,7 @@
 
       <div class="product-card fade-element">
         <img 
-          src="https://m.media-amazon.com/images/X/bxt1/M/kbxt1BRxg-OUiRi._SL640_QL75_FMwebp_.jpg" 
+          src="https://m.media-amazon.com/images/X/bxt1/M/kbxt1BRxg-OUiRi.SL640_QL75_FMwebp.jpg" 
           alt="Alphonoso Mango"
         />
         <h3>Alphonoso Mango</h3>
@@ -696,21 +751,17 @@
     </div>
   </section>
 
-  <!-- COLD DRINKS SECTION -->
+
   <section class="products-section fade-element" id="cold-drinks">
     <h2>Cold Drink</h2>
     <div class="product-grid">
-      <!-- Cold Drink Cards -->
+      <!-- Your existing cold drink cards remain unchanged -->
       <div class="product-card fade-element">
-        <img 
-          src="https://m.media-amazon.com/images/I/51pGxfs4w1L.jpg"
-          alt="Pepsi"
-        />
+        <img src="https://m.media-amazon.com/images/I/51pGxfs4w1L.jpg" alt="Pepsi"/>
         <h3>Pepsi</h3>
         <div class="price-volume">#ON MRP</div>
-
       </div>
-
+      <!-- ... other cold drink cards ... -->
       <div class="product-card fade-element">
         <img 
           src="https://5.imimg.com/data5/SELLER/Default/2021/5/GA/QN/UA/107425127/250ml-sting-energy-drink.jpg"
@@ -913,33 +964,20 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+
   <footer>
+    <!-- Your existing footer remains unchanged -->
     <div class="footer-container">
-      <!-- Products Column -->
       <div class="footer-column">
         <h3>Products</h3>
         <ul>
-          <a href="/product ikn dex.html">
-              <li>Milk</li>
-          </a>
-          <a href="/product ikn dex.html">
-              <li>Ghee</li>
-          </a>
-          <a href="/product ikn dex.html">
-              <li>Paneer</li>
-          </a>
-          <a href="/product ikn dex.html">
-              <li>Curd</li>
-          </a>
-          <a href="/product ikn dex.html">
-              <li>Buttermilk</li>
-          </a>
-
-      </ul>
+          <a href="/product ikn dex.html"><li>Milk</li></a>
+          <a href="/product ikn dex.html"><li>Ghee</li></a>
+          <a href="/product ikn dex.html"><li>Paneer</li></a>
+          <a href="/product ikn dex.html"><li>Curd</li></a>
+          <a href="/product ikn dex.html"><li>Buttermilk</li></a>
+        </ul>
       </div>
-
-      <!-- Policy Column -->
       <div class="footer-column">
         <h3>Policy</h3>
         <ul>
@@ -949,48 +987,40 @@
           <li><a href="#">Shipping Policy</a></li>
         </ul>
       </div>
-
-      <!-- Contact Us Column -->
       <div class="footer-column">
         <h3>Contact Us</h3>
-        <!-- Address -->
-        <p>
-          <span class="footer-icon">&#128205;</span>
-          shop no 3, ush apt. indra nagar, near purnima chowk, kalyan (w), 421301
-        </p>
-        <!-- Email -->
-        <p>
-          <span class="footer-icon">&#128231;</span>
-          <a href="mailto:support@pravarshaindustries.com">veduforall@gmail.com</a>
-        </p>
-        <!-- Phone -->
-        <p>
-          <span class="footer-icon">&#128222;</span>
-          8104329223 &nbsp;|&nbsp; 882851983
-        </p>
+        <p><span class="footer-icon">📍</span>shop no 3, ush apt. indra nagar, near purnima chowk, kalyan (w), 421301</p>
+        <p><span class="footer-icon">📧</span><a href="mailto:support@pravarshaindustries.com">veduforall@gmail.com</a></p>
+        <p><span class="footer-icon">📞</span>8104329223 | 882851983</p>
       </div>
     </div>
   </footer>
 
-  <!-- SCROLL ANIMATION SCRIPT -->
   <script>
-    // Intersection Observer for fade-in
-    const fadeElements = document.querySelectorAll('.fade-element');
-    const observerOptions = {
-      threshold: 0.1
-    };
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-element');
+      const observerOptions = {
+        threshold: 0.1
+      };
 
-    const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
+      const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach(el => fadeInOnScroll.observe(el));
+
+      // Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('nav ul');
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
       });
-    }, observerOptions);
-
-    fadeElements.forEach(el => {
-      fadeInOnScroll.observe(el);
     });
   </script>
 </body>
