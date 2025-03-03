@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
     <link rel="shortcut icon" href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
         type="image/x-icon" />
+
     <style>
         /******************************************************
-   * LIGHT-THEME COLOR PALETTE (Beige & Gold):
-   * #fff8ed (Lightest background - Very Light Beige)
-   * #ffffff (Light background container - White)
-   * #212529 (Dark text color - Almost Black - *Using standard dark text for readability, can adjust if needed*)
-   * #a36711 (Primary accent color - Dark Gold/Brown)
-   * #d9a456 (Secondary accent color - Medium Gold/Brown)
-   * #ffeed2 (Subtle background/accent - Light Beige/Cream)
-   ******************************************************/
+    * LIGHT-THEME COLOR PALETTE (Beige & Gold):
+    * #fff8ed (Lightest background - Very Light Beige)
+    * #ffffff (Light background container - White)
+    * #212529 (Dark text color - Almost Black - *Using standard dark text for readability, can adjust if needed*)
+    * #a36711 (Primary accent color - Dark Gold/Brown)
+    * #d9a456 (Secondary accent color - Medium Gold/Brown)
+    * #ffeed2 (Subtle background/accent - Light Beige/Cream)
+    ******************************************************/
 
         /* --------------------------
-      BASIC RESET & BODY
-      -------------------------- */
+    BASIC RESET & BODY
+    -------------------------- */
+
         * {
             margin: 0;
             padding: 0;
@@ -39,12 +41,21 @@
             padding: 0;
             overflow-x: hidden;
             text-align: center;
+            font-size: 16px;
+            /* Base font size */
+        }
+
+        /* Responsive typography */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
         }
 
         /*
     SCROLL & HOVER ANIMATIONS
     We'll define multiple keyframes & classes for different effects:
-  */
+    */
 
         /* Keyframes */
         @keyframes slideUp {
@@ -139,7 +150,7 @@
         /*
     ADDITIONAL HOVER EFFECTS
     We already have basic image hover scaling. Let's enhance them:
-  */
+    */
         .hover-rotate:hover {
             transform: rotate(3deg) scale(1.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -147,8 +158,8 @@
         }
 
         /* --------------------------
-      STICKY HEADER & NAVIGATION
-      -------------------------- */
+    STICKY HEADER & NAVIGATION
+    -------------------------- */
         header {
             background: #a36711;
             /* Navigation background color changed to Dark Gold/Brown */
@@ -158,6 +169,7 @@
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             /* Adjusted shadow for light theme */
+            width: 100%;
         }
 
         .container {
@@ -183,6 +195,34 @@
 
         .logo img:hover {
             transform: scale(1.1);
+        }
+
+        /* Mobile Navigation - Fix for hamburger icon */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Add hamburger icon using CSS */
+        .mobile-menu-toggle::before {
+            content: '☰';
+            /* This creates the hamburger icon */
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                float: right;
+                margin-top: 10px;
+            }
+
+            /* Rest of your mobile menu CSS remains the same */
         }
 
         nav {
@@ -213,20 +253,115 @@
             transform: translateY(-3px);
         }
 
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                float: right;
+                margin-top: 10px;
+            }
+
+            nav {
+                float: none;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+
+            nav.open {
+                max-height: 500px;
+            }
+
             nav ul {
                 flex-direction: column;
                 align-items: flex-start;
+                width: 100%;
+                padding-top: 15px;
             }
 
             nav ul li {
-                margin: 10px 0 0 0;
+                margin: 10px 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            /* Mobile Navigation */
+            .mobile-menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                color: #ffffff;
+                font-size: 24px;
+                cursor: pointer;
+                padding: 5px;
+            }
+
+            .mobile-menu-toggle::before {
+                content: '☰';
+                /* This creates the hamburger icon */
+                display: inline-block;
+            }
+
+            @media (max-width: 768px) {
+                .mobile-menu-toggle {
+                    display: block;
+                    float: right;
+                    margin-top: 10px;
+                }
+
+                nav {
+                    float: none;
+                    width: 100%;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.5s ease;
+                    clear: both;
+                    /* This ensures the nav appears below the button */
+                }
+
+                nav.open {
+                    max-height: 500px;
+                    /* This allows the menu to expand when opened */
+                }
+
+                nav ul {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    width: 100%;
+                    padding-top: 15px;
+                }
+
+                nav ul li {
+                    margin: 10px 0;
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+
+            .logo {
+                float: left;
+                max-width: 70%;
+            }
+
+            .logo img {
+                height: 40px;
             }
         }
 
         /* --------------------------
-      HERO SLIDER
-      -------------------------- */
+    HERO SLIDER
+    -------------------------- */
         .hero {
             position: relative;
             height: 600px;
@@ -275,6 +410,8 @@
             border-radius: 10px;
             /* We'll add a slight fade/slide for the hero text */
             animation: slideUp 1.2s ease-out;
+            width: 80%;
+            max-width: 600px;
         }
 
         .slide-content h1 {
@@ -318,9 +455,42 @@
             /* Primary accent color - Dark Gold/Brown on hover */
         }
 
+        @media (max-width: 768px) {
+            .hero {
+                height: 400px;
+            }
+
+            .slide-content h1 {
+                font-size: 32px;
+            }
+
+            .slide-content p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 300px;
+            }
+
+            .slide-content h1 {
+                font-size: 24px;
+            }
+
+            .slide-content p {
+                font-size: 16px;
+            }
+
+            .slide-content {
+                padding: 15px;
+                width: 90%;
+            }
+        }
+
         /* --------------------------
-      WELCOME SECTION
-      -------------------------- */
+    WELCOME SECTION
+    -------------------------- */
         .welcome-section {
             display: flex;
             max-width: 1200px;
@@ -332,6 +502,7 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             /* Adjusted shadow for light theme */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 90%;
         }
 
         .welcome-section:hover {
@@ -358,6 +529,8 @@
             /* Adjust shadow for light theme */
             border-radius: 4px;
             transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 300px;
         }
 
         .image-container:hover {
@@ -366,8 +539,9 @@
 
         .image-container img {
             display: block;
-            max-width: 300px;
+            max-width: 100%;
             border-radius: 4px;
+            height: auto;
         }
 
         .right-content {
@@ -432,6 +606,16 @@
             font-size: 16px;
         }
 
+        @media (max-width: 992px) {
+            .welcome-section {
+                width: 95%;
+            }
+
+            .right-content h1 {
+                font-size: 1.8rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .welcome-section {
                 flex-direction: column;
@@ -446,14 +630,23 @@
                 padding: 20px;
             }
 
-            .image-container img {
-                max-width: 100%;
+            .image-container {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+
+            .right-content {
+                padding: 20px;
+            }
+
+            .right-content h1 {
+                font-size: 1.5rem;
             }
         }
 
         /* --------------------------
-      ALL FARM FRESH PRODUCTS
-      -------------------------- */
+    ALL FARM FRESH PRODUCTS
+    -------------------------- */
         h2.g2 {
             color: #a36711;
             /* Primary accent color - Dark Gold/Brown */
@@ -469,6 +662,7 @@
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
+            width: 95%;
         }
 
         .product {
@@ -513,9 +707,33 @@
             /* Dark text color - Almost Black */
         }
 
+        @media (max-width: 480px) {
+            .products-container {
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .product {
+                width: 100px;
+            }
+
+            .product img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .product p {
+                font-size: 14px;
+            }
+
+            h2.g2 {
+                font-size: 1.5rem;
+            }
+        }
+
         /* --------------------------
-      CARD CONTAINER
-      -------------------------- */
+    CARD CONTAINER
+    -------------------------- */
         .card-container {
             display: flex;
             flex-wrap: wrap;
@@ -524,6 +742,7 @@
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
+            width: 95%;
         }
 
         .card {
@@ -579,14 +798,44 @@
             font-weight: bold;
         }
 
+        @media (max-width: 992px) {
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-container {
+                gap: 15px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                width: 100%;
+            }
+
+            .card-container {
+                padding: 10px;
+            }
+        }
+
         /* --------------------------
-      TESTIMONIALS SECTION
-      -------------------------- */
+    TESTIMONIALS SECTION
+    -------------------------- */
         .testimonials {
             padding: 30px;
             border-radius: 20px;
             text-align: center;
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
             margin: 40px auto;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -643,9 +892,36 @@
             /* Secondary accent color - Medium Gold/Brown */
         }
 
+        @media (max-width: 992px) {
+            .testimonials {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .testimonial {
+                width: 45%;
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials h2 {
+                font-size: 24px;
+            }
+
+            .testimonial {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .testimonial h3 {
+                font-size: 20px;
+            }
+        }
+
         /* --------------------------
-      PRODUCTS GRID (Dairy, Ice Cream, etc.)
-      -------------------------- */
+    PRODUCTS GRID (Dairy, Ice Cream, etc.)
+    -------------------------- */
         .section-title {
             color: #a36711;
             /* Primary accent color - Dark Gold/Brown */
@@ -660,6 +936,7 @@
             justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
+            width: 95%;
         }
 
         .product-item {
@@ -699,13 +976,43 @@
             /* Dark text color - Almost Black */
         }
 
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .products-grid {
+                gap: 15px;
+            }
+
+            .product-item {
+                width: calc(50% - 15px);
+                padding: 15px;
+            }
+
+            .product-item h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
         /* --------------------------
-      PRICE TABLE SECTION
-      -------------------------- */
+    PRICE TABLE SECTION
+    -------------------------- */
         .price-table-section {
             max-width: 1200px;
             margin: 40px auto;
             padding: 40px 20px;
+            width: 95%;
         }
 
         .price-table-section h1 {
@@ -718,6 +1025,9 @@
 
         .table-responsive {
             overflow-x: auto;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scrolling on iOS */
         }
 
         table {
@@ -738,6 +1048,8 @@
             letter-spacing: 1px;
             border-bottom: 2px solid #a36711;
             /* Primary accent color - Dark Gold/Brown border */
+            white-space: nowrap;
+            /* Prevent text wrapping in headers */
         }
 
         tbody td {
@@ -759,21 +1071,49 @@
             transform: translateY(-3px);
         }
 
+        @media (max-width: 992px) {
+            .price-table-section h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .price-table-section {
+                padding: 30px 15px;
+            }
+
+            .price-table-section h1 {
+                font-size: 1.8rem;
+            }
+        }
+
         @media (max-width: 600px) {
 
             thead th,
             tbody td {
-                padding: 10px;
+                padding: 10px 8px;
+                font-size: 0.9rem;
             }
 
             .price-table-section h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            /* Add horizontal indicators for scrollable table */
+            .table-responsive:after {
+                content: "← Scroll →";
+                display: block;
+                text-align: center;
+                padding: 5px;
+                color: #a36711;
+                font-size: 0.8rem;
             }
         }
 
         /* --------------------------
-      FOOTER
-      -------------------------- */
+    FOOTER
+    -------------------------- */
         footer {
             background: #ffffff;
             /* Light background container - White */
@@ -783,6 +1123,7 @@
             font-family: Arial, sans-serif;
             margin-top: 40px;
             text-align: center;
+            width: 100%;
         }
 
         .footer-container {
@@ -858,19 +1199,35 @@
             color: #212529;
             /* Dark text color on footer link hover */
         }
-    </style>
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            footer {
+                padding: 30px 15px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- =====================
-       Sticky Nav Section
-       ===================== -->
+     Sticky Nav Section
+     ===================== -->
     <header>
         <div class="container">
             <div class="logo">
                 <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
             <nav>
                 <ul>
                     <li><a href="/index.html">Home</a></li>
@@ -1000,7 +1357,7 @@
     <!-- =====================
        Price Table Section
        ===================== -->
-       <div class="container price-table-section scroll-slide-up">
+    <div class="container price-table-section scroll-slide-up">
         <h1>Milk Products Price List</h1>
         <div class="table-responsive">
             <table>
@@ -1279,7 +1636,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- =====================
        Footer
@@ -1320,7 +1677,7 @@
                 <h3>Contact Us</h3>
                 <p>
                     <span class="footer-icon">&#128205;</span>
-                    shop no 3, usha apt. indra nagar, near purnima cholwk, kalyan (w), 421301
+                    shop no 3, usha apt. indra nagar, near purnima chowk, kalyan (w), 421301
                 </p>
                 <p>
                     <span class="footer-icon">&#128231;</span>
@@ -1395,6 +1752,43 @@
         scrollElements.forEach(el => {
             scrollObserver.observe(el);
         });
+        /* Add this JavaScript code to your page to implement the mobile menu toggle */
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    nav.classList.toggle('open');
+                });
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    nav.classList.toggle('open');
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function () {
+                    nav.classList.toggle('open');
+                    // Optional: Toggle between hamburger and X
+                    this.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
+                });
+            }
+        });
+
+
     </script>
 </body>
 
