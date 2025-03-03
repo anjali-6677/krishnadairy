@@ -27,26 +27,21 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fff8ed;
-      /* Very Light Beige */
       color: #212529;
-      /* Dark text color */
     }
 
     a {
       color: #a36711;
-      /* Primary accent color */
       text-decoration: none;
     }
 
     a:hover {
       color: #d9a456;
-      /* Secondary accent color */
     }
 
     /* Header */
     header {
       background-color: #a36711;
-      /* Primary accent for header background */
       padding: 20px;
       display: flex;
       justify-content: space-between;
@@ -60,21 +55,49 @@
       color: #ffeed2;
     }
 
+    nav {
+      position: relative;
+    }
+
+    .nav-toggle {
+      display: none; /* Hidden by default, shown on mobile */
+    }
+
+    .hamburger {
+      display: none; /* Hidden on desktop */
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background-color: #ffeed2;
+      transition: all 0.3s ease;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
       align-items: center;
+      background-color: #a36711; /* Gold background for desktop */
     }
+
     nav ul li {
       padding: 0 15px;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #d9a456; /* Dark text */
+      color: #ffeed2; /* Beige text for better contrast on gold */
       transition: color 0.3s, transform 0.3s;
     }
+
     nav ul li a:hover {
-      color: #ffeed2; /* Primary accent on hover */
+      color: #d9a456; /* Secondary accent color on hover */
       transform: translateY(-2px);
     }
 
@@ -156,7 +179,6 @@
     /* Contact Left (Form) */
     .contact-form {
       background-color: #ffffff;
-      /* White container */
       padding: 20px;
       border-radius: 4px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -224,12 +246,10 @@
       margin-top: 20px;
       width: 100%;
       background-color: #ffeed2;
-      /* Subtle background */
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 10px;
-      /* some padding around the image */
       border-radius: 4px;
     }
 
@@ -244,7 +264,6 @@
     footer {
       background-color: #ffffff;
       color: #ffffff;
-      /* This will be overridden by child elements if needed */
       padding: 40px 20px;
       margin-top: 40px;
     }
@@ -272,7 +291,6 @@
       font-size: 14px;
       margin-bottom: 10px;
       color: #212529;
-      /* Dark text in footer */
     }
 
     .footer-column ul {
@@ -306,7 +324,6 @@
       margin-top: 20px;
       font-size: 14px;
       color: #212529;
-      /* Dark text for the bottom area */
     }
 
     .footer-bottom a {
@@ -314,7 +331,73 @@
     }
 
     /* Responsive Media Queries */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 30px 15px;
+      }
+
+      .hero {
+        height: 250px;
+      }
+
+      .hero-content h1 {
+        font-size: 40px;
+      }
+
+      .hero-content p {
+        font-size: 14px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .contact-section {
+        gap: 30px;
+      }
+    }
+
     @media (max-width: 768px) {
+      header {
+        padding: 15px;
+      }
+
+      .header-logo {
+        margin-bottom: 0;
+      }
+
+      .hamburger {
+        display: flex; /* Show hamburger on mobile */
+      }
+
+      nav ul {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjusted for better positioning */
+        left: 0;
+        right: 0;
+        background-color: #a36711; /* Gold background for mobile dropdown */
+        padding: 15px 0;
+        z-index: 10;
+        list-style: none; /* Ensure no default list styling */
+      }
+
+      .nav-toggle:checked ~ ul {
+        display: flex; /* Show when checkbox is checked */
+      }
+
+      nav ul li {
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      nav ul li a {
+        color: #ffeed2; /* Beige text for mobile dropdown */
+        font-size: 16px;
+      }
+
       .hero {
         height: 200px;
       }
@@ -323,16 +406,114 @@
         font-size: 32px;
       }
 
+      .hero-content p {
+        font-size: 14px;
+      }
+
       .section-title h2 {
         font-size: 26px;
       }
 
+      .section-title p {
+        font-size: 14px;
+      }
+
       .contact-section {
         flex-direction: column;
+        gap: 20px;
+      }
+
+      .contact-left,
+      .contact-right {
+        min-width: 100%;
       }
 
       .footer-container {
         flex-direction: column;
+        gap: 30px;
+      }
+
+      .footer-column {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-logo {
+        font-size: 20px;
+      }
+
+      .hamburger {
+        width: 25px;
+        height: 18px;
+      }
+
+      nav ul li a {
+        font-size: 14px;
+      }
+
+      .hero {
+        height: 150px;
+      }
+
+      .hero-content h1 {
+        font-size: 24px;
+      }
+
+      .hero-content p {
+        font-size: 12px;
+      }
+
+      .container {
+        padding: 20px 10px;
+      }
+
+      .section-title h2 {
+        font-size: 22px;
+      }
+
+      .section-title p {
+        font-size: 13px;
+      }
+
+      .contact-form h3,
+      .contact-details h3 {
+        font-size: 18px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        font-size: 12px;
+        padding: 8px;
+      }
+
+      .contact-form button {
+        font-size: 14px;
+        padding: 10px 15px;
+      }
+
+      .contact-details p {
+        font-size: 13px;
+      }
+
+      .footer-column h4 {
+        font-size: 16px;
+      }
+
+      .footer-column p,
+      .footer-column li {
+        font-size: 12px;
+      }
+
+      .footer-bottom {
+        font-size: 12px;
+      }
+
+      .social-icons a {
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 14px;
       }
     }
   </style>
@@ -343,18 +524,18 @@
   <header>
     <div class="header-logo">Shree Krishna Dairy</div>
     <nav>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
       <ul>
         <li><a href="/index.html">Home</a></li>
-        <li><a href="/product ikn dex.html">Products</a></li>
-        <li><a href="/contect us index.html">Contact Us</a></li>
-        <li><a href="/about us index.html">About Us</a></li>
+        <li><a href="/products.html">Products</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/about.html">About Us</a></li>
       </ul>
-      
-        
-        
-
-
-      
     </nav>
   </header>
 
@@ -362,13 +543,12 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Contact</h1>
-      <p>Home / Product / Contact</p>
+      <p>Home / Products / Contact</p>
     </div>
   </section>
 
   <!-- Main Container -->
   <div class="container">
-
     <!-- Section Title -->
     <div class="section-title">
       <h2>Contact Us</h2>
@@ -377,7 +557,6 @@
 
     <!-- Contact Section -->
     <div class="contact-section">
-
       <!-- Left: Contact Form -->
       <div class="contact-left">
         <div class="contact-form">
@@ -407,7 +586,6 @@
             <a href="mailto:veduforall@gmail.com">veduforall@gmail.com</a>
           </p>
           <div class="map-container">
-            <!-- Clickable Image linking to Google Maps -->
             <a href="https://www.google.com/maps/place/Shree+Krishna+Dairy+(Since+1970)+Ushanagar/@19.2431616,73.1474586,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7954e2f1b4045:0x3d10335a44152a4d!8m2!3d19.2431616!4d73.1474586!16s%2Fg%2F11x2k96zqm?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D"
               target="_blank" rel="noopener noreferrer">
               <img src="https://i.postimg.cc/TwXddHh1/Screenshot-2025-02-28-173049.png" alt="Map location screenshot" />
@@ -415,14 +593,12 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
     <div class="footer-container">
-      <!-- Office Info -->
       <div class="footer-column">
         <h4>Our Shop</h4>
         <p>Shop no. 003, Usha apt. Indranagar near pirnima, kalyan Maharashtra (421301)</p>
@@ -433,23 +609,20 @@
           </a>
         </p>
       </div>
-      <!-- Quick Links -->
       <div class="footer-column">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="/index.html">Home</a></li>
-          <li><a href="/product ikn dex.html">Products</a></li>
-          <li><a href="/contect us index.html">Contact Us</a></li>
-          <li><a href="/about us index.html">About Us</a></li>
+          <li><a href="/products.html">Products</a></li>
+          <li><a href="/contact.html">Contact Us</a></li>
+          <li><a href="/about.html">About Us</a></li>
         </ul>
       </div>
-      <!-- Business Hours -->
       <div class="footer-column">
         <h4>Shop Hours</h4>
         <p>Monday - Sunday</p>
-        <p>06:00 am - 012:00 pm</p>
+        <p>06:00 am - 12:00 pm</p>
       </div>
-      <!-- Newsletter (renamed to Products for consistency) -->
       <div class="footer-column">
         <h4>Products</h4>
         <p>Milk</p>
@@ -461,10 +634,8 @@
     <div class="footer-bottom">
       © Shree Krishna Dairy, All Right Reserved.
       <br />
-
     </div>
   </footer>
-
 </body>
 
 </html>
