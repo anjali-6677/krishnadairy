@@ -60,7 +60,7 @@
     }
 
     .nav-toggle {
-      display: none; /* Hidden by default, shown on mobile */
+      display: none; /* Hidden by default, used for mobile with JavaScript */
     }
 
     .hamburger {
@@ -79,26 +79,53 @@
       transition: all 0.3s ease;
     }
 
-    nav ul {
+    .nav-desktop {
       list-style: none;
       display: flex;
       align-items: center;
-      background-color: #a36711; /* Gold background for desktop */
     }
 
-    nav ul li {
+    .nav-desktop li {
       padding: 0 15px;
     }
 
-    nav ul li a {
+    .nav-desktop li a {
       text-decoration: none;
-      color: #ffeed2; /* Beige text for better contrast on gold */
+      color: #ffeed2; /* Beige text for desktop */
       transition: color 0.3s, transform 0.3s;
     }
 
-    nav ul li a:hover {
+    .nav-desktop li a:hover {
       color: #d9a456; /* Secondary accent color on hover */
       transform: translateY(-2px);
+    }
+
+    /* Mobile Menu Styles */
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: #a36711; /* Gold background for mobile dropdown */
+      flex-direction: column;
+      padding: 15px 0;
+      z-index: 100;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .nav-menu li {
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .nav-menu li a {
+      color: #ffeed2; /* Beige text for mobile dropdown */
+      font-size: 16px;
     }
 
     /* Hero/Banner Section */
@@ -370,30 +397,34 @@
         display: flex; /* Show hamburger on mobile */
       }
 
-      nav ul {
-        display: none; /* Hidden by default on mobile */
-        flex-direction: column;
+      .nav-desktop {
+        display: none; /* Hide desktop nav on mobile */
+      }
+
+      .nav-menu {
+        display: none;
         position: absolute;
-        top: 60px; /* Adjusted for better positioning */
+        top: 60px;
         left: 0;
         right: 0;
         background-color: #a36711; /* Gold background for mobile dropdown */
+        flex-direction: column;
         padding: 15px 0;
         z-index: 10;
         list-style: none; /* Ensure no default list styling */
       }
 
-      .nav-toggle:checked ~ ul {
-        display: flex; /* Show when checkbox is checked */
+      .nav-menu.active {
+        display: flex;
       }
 
-      nav ul li {
+      .nav-menu li {
         padding: 10px 0;
         text-align: center;
         width: 100%;
       }
 
-      nav ul li a {
+      .nav-menu li a {
         color: #ffeed2; /* Beige text for mobile dropdown */
         font-size: 16px;
       }
@@ -448,7 +479,7 @@
         height: 18px;
       }
 
-      nav ul li a {
+      .nav-menu li a {
         font-size: 14px;
       }
 
@@ -524,17 +555,16 @@
   <header>
     <div class="header-logo">Shree Krishna Dairy</div>
     <nav>
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="hamburger">
+      <button class="hamburger" id="nav-toggle">
         <span></span>
         <span></span>
         <span></span>
-      </label>
-      <ul>
+      </button>
+      <ul class="nav-desktop">
         <li><a href="/index.html">Home</a></li>
-        <li><a href="/product ikn dex.html">Products</a></li> <!-- Fixed typo -->
-        <li><a href="/contect us index.html">Contact Us</a></li> <!-- Fixed typo -->
-        <li><a href="/about us index.html">About Us</a></li> <!-- Fixed typo -->
+        <li><a href="/products.html">Products</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/about.html">About Us</a></li>
       </ul>
     </nav>
   </header>
@@ -636,6 +666,50 @@
       <br />
     </div>
   </footer>
+
+  <script>
+    // Hamburger Menu Toggle with JavaScript
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const navMenu = document.querySelector('.nav-menu');
+      const navDesktop = document.querySelector('.nav-desktop');
+
+      // Show desktop nav and hide mobile menu on desktop
+      function handleResize() {
+        if (window.innerWidth > 768) {
+          navDesktop.style.display = 'flex';
+          navMenu.style.display = 'none';
+          navMenu.classList.remove('active');
+        } else {
+          navDesktop.style.display = 'none';
+          navMenu.style.display = 'none'; // Ensure mobile menu is hidden by default
+        }
+      }
+
+      // Initial check on page load
+      handleResize();
+
+      // Listen for window resize
+      window.addEventListener('resize', handleResize);
+
+      // Hamburger toggle for mobile
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        // Optional: Animate hamburger lines (optional for visual feedback)
+        hamburger.classList.toggle('open');
+      });
+
+      // Close menu when clicking outside (optional for better UX)
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('open');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

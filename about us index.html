@@ -956,6 +956,12 @@
       });
     }, observerOptions);
     fadeElements.forEach(el => fadeInOnScroll.observe(el));
+    const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('nav ul');
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+      });
   </script>
 </body>
 </html>
