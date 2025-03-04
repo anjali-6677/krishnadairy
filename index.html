@@ -11,19 +11,18 @@
 
     <style>
         /******************************************************
-    * LIGHT-THEME COLOR PALETTE (Beige & Gold):
-    * #fff8ed (Lightest background - Very Light Beige)
-    * #ffffff (Light background container - White)
-    * #212529 (Dark text color - Almost Black - *Using standard dark text for readability, can adjust if needed*)
-    * #a36711 (Primary accent color - Dark Gold/Brown)
-    * #d9a456 (Secondary accent color - Medium Gold/Brown)
-    * #ffeed2 (Subtle background/accent - Light Beige/Cream)
+     * LIGHT-THEME COLOR PALETTE (Beige & Gold):
+     * #fff8ed (Lightest background - Very Light Beige)
+     * #ffffff (Light background container - White)
+     * #212529 (Dark text color - Almost Black)
+     * #a36711 (Primary accent color - Dark Gold/Brown)
+     * #d9a456 (Secondary accent color - Medium Gold/Brown)
+     * #ffeed2 (Subtle background/accent - Light Beige/Cream)
     ******************************************************/
 
         /* --------------------------
-    BASIC RESET & BODY
+       BASIC RESET & BODY
     -------------------------- */
-
         * {
             margin: 0;
             padding: 0;
@@ -34,18 +33,14 @@
             font-family: 'Roboto', sans-serif, Arial, sans-serif;
             line-height: 1.6;
             background-color: #fff8ed;
-            /* Lightest background - Very Light Beige */
             color: #212529;
-            /* Dark text color - Almost Black */
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             text-align: center;
             font-size: 16px;
-            /* Base font size */
         }
 
-        /* Responsive typography */
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -53,11 +48,8 @@
         }
 
         /*
-    SCROLL & HOVER ANIMATIONS
-    We'll define multiple keyframes & classes for different effects:
+       SCROLL & HOVER ANIMATIONS
     */
-
-        /* Keyframes */
         @keyframes slideUp {
             0% {
                 transform: translateY(50px);
@@ -116,17 +108,14 @@
             }
         }
 
-        /* Scroll animation classes (start hidden) */
         .scroll-slide-up,
         .scroll-slide-left,
         .scroll-slide-right,
         .scroll-zoom-in,
         .scroll-fade-in {
             opacity: 0;
-            /* Hidden by default, revealed on scroll */
         }
 
-        /* .in-view triggers the animation */
         .scroll-slide-up.in-view {
             animation: slideUp 1s ease-out forwards;
         }
@@ -147,28 +136,21 @@
             animation: fadeIn 1s ease-out forwards;
         }
 
-        /*
-    ADDITIONAL HOVER EFFECTS
-    We already have basic image hover scaling. Let's enhance them:
-    */
         .hover-rotate:hover {
             transform: rotate(3deg) scale(1.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            /* Adjusted shadow for light theme */
         }
 
         /* --------------------------
-    STICKY HEADER & NAVIGATION
+       STICKY HEADER & NAVIGATION
     -------------------------- */
         header {
             background: #a36711;
-            /* Navigation background color changed to Dark Gold/Brown */
             padding: 20px;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* Adjusted shadow for light theme */
             width: 100%;
         }
 
@@ -184,7 +166,6 @@
             font-size: 24px;
             font-weight: 700;
             color: #ffffff;
-            /* Logo color changed to White for contrast on gold/brown nav */
         }
 
         .logo img {
@@ -197,7 +178,7 @@
             transform: scale(1.1);
         }
 
-        /* Mobile Navigation - Fix for hamburger icon */
+        /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
             background: none;
@@ -208,21 +189,15 @@
             padding: 5px;
         }
 
-        /* Add hamburger icon using CSS */
+        /* Use the ::before pseudo-element to display the hamburger icon */
         .mobile-menu-toggle::before {
             content: '☰';
-            /* This creates the hamburger icon */
             display: inline-block;
         }
 
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-                float: right;
-                margin-top: 10px;
-            }
-
-            /* Rest of your mobile menu CSS remains the same */
+        /* When menu is open, switch the icon to an X */
+        .mobile-menu-toggle.menu-opened::before {
+            content: '✕';
         }
 
         nav {
@@ -242,28 +217,16 @@
         nav ul li a {
             text-decoration: none;
             color: #ffffff;
-            /* Navigation link color changed to White for contrast on gold/brown nav */
             font-weight: 500;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
         nav ul li a:hover {
             color: #ffeed2;
-            /* Navigation link hover color changed to Light Beige/Cream for hover effect on gold/brown nav */
             transform: translateY(-3px);
         }
 
-        /* Mobile Navigation */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
+        /* Mobile Navigation Styles */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
@@ -277,6 +240,7 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.5s ease;
+                clear: both;
             }
 
             nav.open {
@@ -296,59 +260,6 @@
                 text-align: left;
             }
 
-            /* Mobile Navigation */
-            .mobile-menu-toggle {
-                display: none;
-                background: none;
-                border: none;
-                color: #ffffff;
-                font-size: 24px;
-                cursor: pointer;
-                padding: 5px;
-            }
-
-            .mobile-menu-toggle::before {
-                content: '☰';
-                /* This creates the hamburger icon */
-                display: inline-block;
-            }
-
-            @media (max-width: 768px) {
-                .mobile-menu-toggle {
-                    display: block;
-                    float: right;
-                    margin-top: 10px;
-                }
-
-                nav {
-                    float: none;
-                    width: 100%;
-                    max-height: 0;
-                    overflow: hidden;
-                    transition: max-height 0.5s ease;
-                    clear: both;
-                    /* This ensures the nav appears below the button */
-                }
-
-                nav.open {
-                    max-height: 500px;
-                    /* This allows the menu to expand when opened */
-                }
-
-                nav ul {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    width: 100%;
-                    padding-top: 15px;
-                }
-
-                nav ul li {
-                    margin: 10px 0;
-                    width: 100%;
-                    text-align: left;
-                }
-            }
-
             .logo {
                 float: left;
                 max-width: 70%;
@@ -360,7 +271,7 @@
         }
 
         /* --------------------------
-    HERO SLIDER
+       HERO SLIDER
     -------------------------- */
         .hero {
             position: relative;
@@ -401,14 +312,11 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: #212529;
-            /* Dark text color - Almost Black */
             text-align: center;
             z-index: 2;
             background: rgba(255, 255, 255, 0.7);
-            /* White with transparency for light theme */
             padding: 20px;
             border-radius: 10px;
-            /* We'll add a slight fade/slide for the hero text */
             animation: slideUp 1.2s ease-out;
             width: 80%;
             max-width: 600px;
@@ -418,15 +326,12 @@
             font-size: 48px;
             margin-bottom: 10px;
             color: #a36711;
-            /* Primary accent color - Dark Gold/Brown */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            /* Adjusted text shadow for light theme */
         }
 
         .slide-content p {
             font-size: 24px;
             color: #212529;
-            /* Dark text color - Almost Black */
         }
 
         .slider-controls {
@@ -443,7 +348,6 @@
             font-size: 2rem;
             cursor: pointer;
             color: #212529;
-            /* Dark text color - Almost Black */
             padding: 0 20px;
             user-select: none;
             transition: transform 0.3s ease, color 0.3s ease;
@@ -452,7 +356,6 @@
         .slider-controls span:hover {
             transform: scale(1.2);
             color: #a36711;
-            /* Primary accent color - Dark Gold/Brown on hover */
         }
 
         @media (max-width: 768px) {
@@ -1112,13 +1015,11 @@
         }
 
         /* --------------------------
-    FOOTER
+       FOOTER
     -------------------------- */
         footer {
             background: #ffffff;
-            /* Light background container - White */
             color: #212529;
-            /* Dark text color - Almost Black */
             padding: 40px 20px;
             font-family: Arial, sans-serif;
             margin-top: 40px;
@@ -1144,7 +1045,6 @@
             font-size: 1.2rem;
             margin-bottom: 16px;
             color: #a36711;
-            /* Primary accent color - Dark Gold/Brown */
         }
 
         .footer-column ul {
@@ -1161,13 +1061,11 @@
         .footer-column a {
             text-decoration: none;
             color: #212529;
-            /* Dark text color - Almost Black */
             transition: color 0.3s ease;
         }
 
         .footer-column a:hover {
             color: #a36711;
-            /* Primary accent color - Dark Gold/Brown on hover */
         }
 
         .footer-column p {
@@ -1180,7 +1078,6 @@
             margin-right: 8px;
             font-size: 1rem;
             color: #d9a456;
-            /* Secondary accent color - Medium Gold/Brown */
         }
 
         footer p {
@@ -1190,14 +1087,12 @@
 
         footer a {
             color: #777;
-            /* Slightly darker link color for footer in light theme */
             text-decoration: none;
             transition: color 0.3s;
         }
 
         footer a:hover {
             color: #212529;
-            /* Dark text color on footer link hover */
         }
 
         @media (max-width: 768px) {
@@ -1220,13 +1115,14 @@
 
 <body>
     <!-- =====================
-     Sticky Nav Section
-     ===================== -->
+       Sticky Nav Section
+  ===================== -->
     <header>
         <div class="container">
             <div class="logo">
                 <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
             </div>
+            <!-- Button is empty and uses ::before for the hamburger icon -->
             <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
             <nav>
                 <ul>
@@ -1241,7 +1137,7 @@
 
     <!-- =====================
        Hero Slider Section
-       ===================== -->
+  ===================== -->
     <section class="hero" id="hero">
         <div class="slider">
             <!-- Slide 1 -->
@@ -1280,6 +1176,13 @@
     </section>
 
     <!-- =====================
+       Other Sections (Welcome, Products, Price Table, Testimonials, etc.)
+       (Unchanged content)
+  ===================== -->
+
+
+
+    <!-- =====================
        Welcome Section
        ===================== -->
     <section class="welcome-section scroll-slide-up">
@@ -1300,7 +1203,7 @@
                 a nutritious start to your day or a sweet treat on a hot afternoon, Shree
                 Krishna Dairy promises freshness and convenience with every order.
             </p>
-            <a href="/about us index.html" class="view-more-link">
+            <a href="/a" class="view-more-link">
                 <div class="circle-icon">
                     <span class="arrow">&#9658;</span>
                 </div>
@@ -1637,10 +1540,9 @@
     </div>
 
 
-
     <!-- =====================
        Footer
-       ===================== -->
+  ===================== -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
@@ -1661,7 +1563,6 @@
                     <a href="/product ikn dex.html">
                         <li>Buttermilk</li>
                     </a>
-
                 </ul>
             </div>
             <div class="footer-column">
@@ -1698,8 +1599,9 @@
 
     <!-- =====================
        Slider & Scroll Animation JavaScript
-       ===================== -->
+  ===================== -->
     <script>
+        // Slider Controls
         const slides = document.querySelectorAll('.slide');
         const next = document.querySelector('.next');
         const prev = document.querySelector('.prev');
@@ -1732,14 +1634,11 @@
             });
         }
 
+        // Scroll Animations
         const scrollElements = document.querySelectorAll(
             '.scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-zoom-in, .scroll-fade-in'
         );
-
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        const observerOptions = { threshold: 0.1 };
         const scrollObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1752,8 +1651,8 @@
         scrollElements.forEach(el => {
             scrollObserver.observe(el);
         });
-        /* Add this JavaScript code to your page to implement the mobile menu toggle */
 
+        // Mobile Menu Toggle
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
             const nav = document.querySelector('nav');
@@ -1761,32 +1660,15 @@
             if (mobileMenuToggle) {
                 mobileMenuToggle.addEventListener('click', function () {
                     nav.classList.toggle('open');
-                });
-            }
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const nav = document.querySelector('nav');
-
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function () {
-                    nav.classList.toggle('open');
+                    this.classList.toggle('menu-opened');
                 });
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const nav = document.querySelector('nav');
 
-            if (mobileMenuToggle) {
-                mobileMenuToggle.addEventListener('click', function () {
-                    nav.classList.toggle('open');
-                    // Optional: Toggle between hamburger and X
-                    this.innerHTML = nav.classList.contains('open') ? '✕' : '☰';
-                });
-            }
-        });
+
+
+
 
 
     </script>
