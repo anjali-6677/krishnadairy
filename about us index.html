@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us</title>
-  <link
-    rel="shortcut icon"
-    href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png"
-    type="image/x-icon"
-  >
+  <link rel="shortcut icon" href="https://i.postimg.cc/Dz8rdrLk/Screenshot-2025-02-27-014313.png" type="image/x-icon">
   <style>
     /*******************************************************
      * LIGHT-THEME COLOR PALETTE (Beige & Gold):
@@ -22,93 +19,251 @@
 
     /* Basic Reset */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff8ed;  /* Body background */
-      color: #212529;             /* Dark text */
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Fade-In Animation */
-    .fade-element {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    .fade-element.fade-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        body {
+            font-family: 'Roboto', sans-serif, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #fff8ed;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+            font-size: 16px;
+        }
 
-    /*******************************************************
-     * HEADER & NAVIGATION
-     *******************************************************/
-    header {
-      background-color: #a36711; /* White container */
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .container-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffeed2; /* Primary accent for logo */
-    }
-    nav {
-      position: relative;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      align-items: center;
-    }
-    nav ul li {
-      margin: 0 15px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #d9a456; /* Dark text for nav links */
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #ffeed2; /* Primary accent on hover */
-    }
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+        }
 
-    /* Hamburger Menu for Mobile */
-    .nav-toggle {
-      display: none; /* Hidden by default, shown on mobile */
-    }
-    .hamburger {
-      display: none; /* Hidden on desktop */
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 20px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      width: 100%;
-      height: 3px;
-      background-color: #ffeed2;
-      transition: all 0.3s ease;
-    }
+        /*
+       SCROLL & HOVER ANIMATIONS
+    */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideRight {
+            0% {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .scroll-slide-up,
+        .scroll-slide-left,
+        .scroll-slide-right,
+        .scroll-zoom-in,
+        .scroll-fade-in {
+            opacity: 0;
+        }
+
+        .scroll-slide-up.in-view {
+            animation: slideUp 1s ease-out forwards;
+        }
+
+        .scroll-slide-left.in-view {
+            animation: slideLeft 1s ease-out forwards;
+        }
+
+        .scroll-slide-right.in-view {
+            animation: slideRight 1s ease-out forwards;
+        }
+
+        .scroll-zoom-in.in-view {
+            animation: zoomIn 1s ease-out forwards;
+        }
+
+        .scroll-fade-in.in-view {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .hover-rotate:hover {
+            transform: rotate(3deg) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --------------------------
+       STICKY HEADER & NAVIGATION
+    -------------------------- */
+        header {
+            background: #a36711;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: auto;
+        }
+
+        .logo {
+            float: left;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo img {
+            height: 50px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Use the ::before pseudo-element to display the hamburger icon */
+        .mobile-menu-toggle::before {
+            content: '☰';
+            display: inline-block;
+        }
+
+        /* When menu is open, switch the icon to an X */
+        .mobile-menu-toggle.menu-opened::before {
+            content: '✕';
+        }
+
+        nav {
+            float: right;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffeed2;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+                float: right;
+                margin-top: 10px;
+            }
+
+            nav {
+                float: none;
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+                clear: both;
+            }
+
+            nav.open {
+                max-height: 500px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                padding-top: 15px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: left;
+            }
+
+            .logo {
+                float: left;
+                max-width: 70%;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
 
     /*******************************************************
      * HEADER IMAGE
@@ -118,13 +273,15 @@
       padding: 40px 0;
       display: flex;
       justify-content: center;
-      background-color: #ffeed2; /* Subtle BG */
+      background-color: #ffeed2;
+      /* Subtle BG */
     }
+
     .header-image img {
       width: 90%;
       max-width: 1200px;
       border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
       object-fit: cover;
     }
 
@@ -136,23 +293,29 @@
       margin: 40px auto;
       padding: 40px 20px;
       text-align: center;
-      background-color: #ffffff; /* White container */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background-color: #ffffff;
+      /* White container */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
+
     .content-block {
       margin-bottom: 60px;
     }
+
     .content-block h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #a36711; /* Primary accent for headings */
+      color: #a36711;
+      /* Primary accent for headings */
     }
+
     .content-block p {
       font-size: 1rem;
       max-width: 800px;
       margin: 0 auto;
-      color: #212529; /* Dark text */
+      color: #212529;
+      /* Dark text */
     }
 
     /*******************************************************
@@ -166,38 +329,47 @@
       max-width: 1200px;
       margin: 40px auto;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      background-color: #ffeed2; /* Subtle BG for testimonials */
+      background-color: #ffeed2;
+      /* Subtle BG for testimonials */
     }
+
     .testimonials h2 {
       font-size: 28px;
-      color: #a36711; /* Primary accent for heading */
+      color: #a36711;
+      /* Primary accent for heading */
       font-weight: bold;
       margin-bottom: 20px;
     }
+
     .testimonial-container {
       display: flex;
       justify-content: space-around;
       gap: 20px;
       flex-wrap: wrap;
     }
+
     .testimonial {
-      background: #ffffff;       /* White container for each testimonial */
+      background: #ffffff;
+      /* White container for each testimonial */
       color: #212529;
       padding: 20px;
       border-radius: 15px;
       width: 30%;
       min-width: 250px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
     }
+
     .testimonial:hover {
       transform: translateY(-5px);
     }
+
     .testimonial h3 {
       margin-bottom: 5px;
       font-size: 22px;
       color: #212529;
     }
+
     .testimonial .role {
       font-weight: bold;
       margin-bottom: 10px;
@@ -212,22 +384,26 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 40px 20px;
-      background-color: #ffffff; /* White container */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background-color: #ffffff;
+      /* White container */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
+
     .team-member {
       display: flex;
       align-items: flex-start;
       margin-bottom: 60px;
       flex-wrap: wrap;
     }
+
     .photo-linkedin {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-right: 20px;
     }
+
     .photo-linkedin img {
       width: 80px;
       height: 80px;
@@ -235,26 +411,32 @@
       border-radius: 50%;
       margin-bottom: 5px;
     }
+
     .photo-linkedin .linkedin {
       font-size: 1rem;
       font-weight: bold;
-      color: #a36711; /* Primary accent for "in" text */
+      color: #a36711;
+      /* Primary accent for "in" text */
     }
+
     .info {
       flex: 1;
       text-align: left;
     }
+
     .info h3 {
       font-size: 1.2rem;
       margin-bottom: 5px;
       text-transform: uppercase;
       color: #212529;
     }
+
     .info .title {
       font-weight: bold;
       color: #212529;
       margin-bottom: 10px;
     }
+
     .info p {
       margin-bottom: 10px;
       color: #212529;
@@ -271,35 +453,44 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #ffffff; /* White container */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background-color: #ffffff;
+      /* White container */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
+
     .card {
-      background-color: #ffeed2; /* Subtle BG for cards */
+      background-color: #ffeed2;
+      /* Subtle BG for cards */
       border-radius: 8px;
       padding: 20px;
       width: calc(33.33% - 20px);
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
+
     .card h2 {
       font-size: 1.5rem;
-      color: #a36711; /* Primary accent for heading */
+      color: #a36711;
+      /* Primary accent for heading */
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
     .card p {
       font-size: 1rem;
-      color: #212529; /* Dark text */
+      color: #212529;
+      /* Dark text */
       margin-bottom: 15px;
     }
+
     .card .highlight {
       color: #212529;
       font-weight: bold;
@@ -312,61 +503,86 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 40px 20px;
-      background-color: #ffffff; /* White container */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background-color: #ffffff;
+      /* White container */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
+
     .price-table-section h1 {
       text-align: center;
       margin-bottom: 30px;
       font-size: 2.5rem;
-      color: #a36711; /* Primary accent for heading */
+      color: #a36711;
+      /* Primary accent for heading */
     }
+
     .table-responsive {
       overflow-x: auto;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 40px;
       animation: fadeIn 1.5s ease-out;
     }
+
     thead th {
-      background-color: #ffeed2; /* Subtle BG for table header */
+      background-color: #ffeed2;
+      /* Subtle BG for table header */
       padding: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      border-bottom: 2px solid #d9a456; /* Secondary accent border */
+      border-bottom: 2px solid #d9a456;
+      /* Secondary accent border */
       color: #212529;
     }
+
     tbody td {
       padding: 15px;
-      border-bottom: 1px solid #d9a456; /* Secondary accent border */
+      border-bottom: 1px solid #d9a456;
+      /* Secondary accent border */
       font-size: 1rem;
       color: #212529;
     }
+
     tbody tr {
       transition: background-color 0.3s ease, transform 0.3s ease;
     }
+
     tbody tr:hover {
-      background-color: #ffeed2; /* Subtle BG on hover */
+      background-color: #ffeed2;
+      /* Subtle BG on hover */
       transform: translateY(-3px);
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /*******************************************************
      * FOOTER
      *******************************************************/
     footer {
-      background: #ffffff; /* White container */
-      color: #212529;      /* Dark text */
+      background: #ffffff;
+      /* White container */
+      color: #212529;
+      /* Dark text */
       padding: 40px 20px;
       margin-top: 40px;
-      border-top: 1px solid #d9a456; /* Secondary accent border on top */
+      border-top: 1px solid #d9a456;
+      /* Secondary accent border on top */
     }
+
     .footer-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -375,87 +591,113 @@
       justify-content: space-between;
       gap: 40px;
     }
+
     .footer-column {
       flex: 1;
       min-width: 200px;
     }
+
     .footer-column h3 {
       font-size: 1.2rem;
       margin-bottom: 16px;
-      color: #a36711; /* Primary accent for headings */
+      color: #a36711;
+      /* Primary accent for headings */
     }
+
     .footer-column ul {
       list-style: none;
       padding: 0;
     }
+
     .footer-column ul li {
       margin-bottom: 8px;
       font-size: 0.95rem;
     }
+
     .footer-column a {
       text-decoration: none;
       color: #212529;
     }
+
     .footer-column a:hover {
       text-decoration: underline;
     }
+
     .footer-column p {
       margin-bottom: 10px;
       font-size: 0.95rem;
     }
+
     .footer-icon {
       margin-right: 8px;
       font-size: 1rem;
-      color: #a36711; /* Primary accent for icons if desired */
+      color: #a36711;
+      /* Primary accent for icons if desired */
     }
 
     /*******************************************************
      * RESPONSIVE MEDIA QUERIES
      *******************************************************/
     @media (max-width: 768px) {
+
       /* Header and Navigation */
       .container-header {
         padding: 10px;
       }
+
       .logo {
         font-size: 1.2rem;
       }
+
       nav ul {
-        display: none; /* Hide desktop nav on mobile */
+        display: none;
+        /* Hide desktop nav on mobile */
       }
+
       .nav-toggle {
-        display: block; /* Show checkbox for mobile toggle */
+        display: block;
+        /* Show checkbox for mobile toggle */
       }
+
       .hamburger {
-        display: flex; /* Show hamburger on mobile */
+        display: flex;
+        /* Show hamburger on mobile */
       }
+
       nav ul {
         position: absolute;
         top: 60px;
         left: 0;
         right: 0;
-        background-color: #a36711; /* Match header background */
+        background-color: #a36711;
+        /* Match header background */
         flex-direction: column;
         padding: 15px 0;
         z-index: 100;
       }
+
       nav ul li {
         margin: 0;
         padding: 10px 20px;
         text-align: center;
       }
+
       nav ul li a {
-        color: #ffeed2; /* Beige text for visibility on gold background */
+        color: #ffeed2;
+        /* Beige text for visibility on gold background */
         font-size: 1rem;
       }
-      .nav-toggle:checked ~ ul {
-        display: flex; /* Show menu when checkbox is checked */
+
+      .nav-toggle:checked~ul {
+        display: flex;
+        /* Show menu when checkbox is checked */
       }
 
       /* Header Image */
       .header-image {
         padding: 20px 0;
       }
+
       .header-image img {
         width: 100%;
         border-radius: 8px;
@@ -466,12 +708,15 @@
         padding: 20px;
         margin: 20px auto;
       }
+
       .content-block {
         margin-bottom: 30px;
       }
+
       .content-block h2 {
         font-size: 1.5rem;
       }
+
       .content-block p {
         font-size: 0.9rem;
       }
@@ -482,9 +727,11 @@
         padding: 20px;
         margin: 20px auto;
       }
+
       .testimonials h2 {
         font-size: 1.5rem;
       }
+
       .testimonial {
         width: 100%;
         min-width: 100%;
@@ -496,24 +743,30 @@
         padding: 20px;
         margin: 20px auto;
       }
+
       .team-member {
         flex-direction: column;
         align-items: center;
         margin-bottom: 30px;
       }
+
       .photo-linkedin {
         margin-right: 0;
         margin-bottom: 15px;
       }
+
       .info {
         text-align: center;
       }
+
       .info h3 {
         font-size: 1rem;
       }
+
       .info .title {
         font-size: 0.9rem;
       }
+
       .info p {
         font-size: 0.85rem;
       }
@@ -523,6 +776,7 @@
         padding: 15px;
         margin: 20px auto;
       }
+
       .card {
         width: 100%;
         margin-bottom: 15px;
@@ -533,16 +787,23 @@
         padding: 20px;
         margin: 20px auto;
       }
+
       .price-table-section h1 {
         font-size: 1.8rem;
       }
+
       .table-responsive {
-        overflow-x: auto; /* Allow horizontal scrolling for tables on mobile */
+        overflow-x: auto;
+        /* Allow horizontal scrolling for tables on mobile */
       }
+
       table {
-        min-width: 300px; /* Ensure table is wide enough to scroll */
+        min-width: 300px;
+        /* Ensure table is wide enough to scroll */
       }
-      thead th, tbody td {
+
+      thead th,
+      tbody td {
         padding: 10px;
         font-size: 0.9rem;
       }
@@ -551,84 +812,106 @@
       footer {
         padding: 20px;
       }
+
       .footer-container {
         flex-direction: column;
         gap: 20px;
       }
+
       .footer-column {
         min-width: 100%;
       }
+
       .footer-column h3 {
         font-size: 1rem;
       }
-      .footer-column ul li, .footer-column p {
+
+      .footer-column ul li,
+      .footer-column p {
         font-size: 0.85rem;
       }
     }
 
     @media (max-width: 480px) {
+
       /* Further refinements for very small screens */
       .logo {
         font-size: 1rem;
       }
+
       .hamburger {
         width: 25px;
         height: 18px;
       }
+
       .header-image {
         padding: 15px 0;
       }
-      .about-section, .team-section, .price-table-section {
+
+      .about-section,
+      .team-section,
+      .price-table-section {
         padding: 15px;
       }
+
       .testimonials {
         width: 95%;
         padding: 15px;
       }
+
       .testimonials h2 {
         font-size: 1.2rem;
       }
+
       .testimonial h3 {
         font-size: 1rem;
       }
+
       .testimonial .role {
         font-size: 0.8rem;
       }
+
       .card h2 {
         font-size: 1.2rem;
       }
+
       .card p {
         font-size: 0.8rem;
       }
+
       .price-table-section h1 {
         font-size: 1.5rem;
       }
+
       .footer-column h3 {
         font-size: 0.9rem;
       }
-      .footer-column ul li, .footer-column p {
+
+      .footer-column ul li,
+      .footer-column p {
         font-size: 0.8rem;
       }
     }
   </style>
 </head>
+
 <body>
-  <!-- HEADER -->
-  <header class="fade-element">
-    <div class="container container-header">
-      <div class="logo">Shree Krishna Dairy</div>
+  <!-- =====================
+       Sticky Nav Section
+  ===================== -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
+      </div>
+      <!-- Button is empty and uses ::before for the hamburger icon -->
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
       <nav>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-        <label for="nav-toggle" class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </label>
         <ul>
           <li><a href="/index.html">Home</a></li>
-          <li><a href="/product ikn dex.html">Products</a></li> <!-- Fixed typo -->
-          <li><a href="/contect us index.html">Contact Us</a></li> <!-- Fixed typo -->
-          <li><a href="/about us index.html">About Us</a></li> <!-- Fixed typo -->
+          <li><a href="/product index.html">Products</a></li>
+          <li><a href="/contect us index.html">Contact Us</a></li>
+          <li><a href="/about us index.html">About Us</a></li>
         </ul>
       </nav>
     </div>
@@ -636,10 +919,7 @@
 
   <!-- HEADER IMAGE -->
   <section class="header-image fade-element">
-    <img
-      src="https://pravarshaindustries.com/img/aboutus.webp"
-      alt="Dairy barn with cows"
-    >
+    <img src="https://pravarshaindustries.com/img/aboutus.webp" alt="Dairy barn with cows">
   </section>
 
   <!-- ABOUT SECTION -->
@@ -648,7 +928,7 @@
       <h2>Who are we?</h2>
       <p>
         Shree Krishna Dairy is a corporate citizen that understands the importance of
-        hygienic milk and dairy products. Established in 1975, we’ve proudly served
+        hygienic milk and dairy products. Established in 1975, we've proudly served
         our community with high‐quality dairy items crafted with tradition, care, and
         innovation.
       </p>
@@ -705,40 +985,39 @@
   <section class="team-section fade-element">
     <div class="team-member">
       <div class="photo-linkedin">
-        <img
-          src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png"
-          alt="Photo of Rampyare Mishra"
-        >
+        <img src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png" alt="Photo of Rampyare Mishra">
       </div>
       <div class="info">
         <h3>Rampyare Mishra</h3>
         <p class="title">Director</p>
         <p>
-            In 1975, Mr. Rampyare Mishra started Shree Krishna Dairy with a small shop selling only cow milk and curd. He focused on good quality and customer service, which made people trust him. Because of this trust and increasing demand, he added buffalo milk, mava, and lassi to his products within a couple of years. Mr. Mishra's strong leadership and focus on quality made the dairy a well-known and trusted place for dairy products.
+          In 1975, Mr. Rampyare Mishra started Shree Krishna Dairy with a small shop selling only cow milk and curd. He
+          focused on good quality and customer service, which made people trust him. Because of this trust and
+          increasing demand, he added buffalo milk, mava, and lassi to his products within a couple of years. Mr.
+          Mishra's strong leadership and focus on quality made the dairy a well-known and trusted place for dairy
+          products.
         </p>
       </div>
     </div>
     <div class="team-member">
       <div class="photo-linkedin">
-        <img
-          src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png"
-          alt="Photo of Vedprakash Mishra"
-        >
+        <img src="https://i.postimg.cc/yNmsWXMN/Screenshot-2025-02-28-211458.png" alt="Photo of Vedprakash Mishra">
       </div>
       <div class="info">
         <h3>Vedprakash Mishra</h3>
         <p class="title">Director</p>
         <p>
-            Mr. Vedprakash Mishra, Mr. Rampyare Mishra's son, has greatly changed Shree Krishna Dairy since 2001. He is known for his hard work and friendly smile. He took the dairy, which started with just cow milk and curd, and added ice cream, cold drinks, and taak. His friendly way of dealing with customers and starting home delivery made customers trust the dairy even more. Mr. Vedprakash Mishra's focus on quality and new ideas keeps Shree Krishna Dairy a loved and trusted name in the area.
+          Mr. Vedprakash Mishra, Mr. Rampyare Mishra's son, has greatly changed Shree Krishna Dairy since 2001. He is
+          known for his hard work and friendly smile. He took the dairy, which started with just cow milk and curd, and
+          added ice cream, cold drinks, and taak. His friendly way of dealing with customers and starting home delivery
+          made customers trust the dairy even more. Mr. Vedprakash Mishra's focus on quality and new ideas keeps Shree
+          Krishna Dairy a loved and trusted name in the area.
         </p>
       </div>
     </div>
     <div class="team-member">
       <div class="photo-linkedin">
-        <img
-          src="https://i.postimg.cc/5yxmXRJp/Screenshot-2025-03-01-160226.png"
-          alt="Photo of Mrs. Sanju Mishra"
-        >
+        <img src="https://i.postimg.cc/5yxmXRJp/Screenshot-2025-03-01-160226.png" alt="Photo of Mrs. Sanju Mishra">
       </div>
       <div class="info">
         <h3>Mrs. Sanju Mishra</h3>
@@ -805,7 +1084,7 @@
       <p>
         Being in the dairy market, we ensure our products are not only the healthiest
         and tastiest but also affordable for everyone. Quality is not something we
-        strive for; it’s something we guarantee with consistency.
+        strive for; it's something we guarantee with consistency.
       </p>
     </div>
   </div>
@@ -933,11 +1212,11 @@
         </p>
         <p>
           <span class="footer-icon">📧</span>
-          <a href="mailto:support@pravarshaindustries.com">veduforall@gmail.com</a>
+          <a href="mailto:veduforall@gmail.com">veduforall@gmail.com</a>
         </p>
         <p>
           <span class="footer-icon">📞</span>
-          8104329223  |  882851983
+          8104329223  |  882851983
         </p>
       </div>
     </div>
@@ -945,23 +1224,44 @@
 
   <!-- SCROLL ANIMATION SCRIPT -->
   <script>
-    const fadeElements = document.querySelectorAll('.fade-element');
-    const observerOptions = { threshold: 0.1 };
-    const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    fadeElements.forEach(el => fadeInOnScroll.observe(el));
-    const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('nav ul');
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-      });
+    document.addEventListener('DOMContentLoaded', function () {
+      // Fade animations
+      const fadeElements = document.querySelectorAll('.fade-element');
+      const observerOptions = { threshold: 0.1 };
+      const fadeInOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      fadeElements.forEach(el => fadeInOnScroll.observe(el));
+
+      // Scroll animations
+      const scrollElements = document.querySelectorAll('.scroll-slide-up, .scroll-slide-left, .scroll-slide-right, .scroll-zoom-in, .scroll-fade-in');
+      const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      scrollElements.forEach(el => scrollObserver.observe(el));
+
+      // Mobile Menu Toggle - Fixed Implementation
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+          nav.classList.toggle('open');
+          this.classList.toggle('menu-opened');
+        });
+      }
+    });
   </script>
 </body>
+
 </html>
