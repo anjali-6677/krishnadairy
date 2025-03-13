@@ -16,254 +16,253 @@
      *   Secondary Accent: #d9a456 (Medium Gold/Brown)
      *   Subtle BG:        #ffeed2 (Light Beige/Cream)
     *******************************************************/
-
     /* Basic Reset */
     * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Roboto', sans-serif, Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #fff8ed;
-            color: #212529;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            text-align: center;
-            font-size: 16px;
-        }
+    body {
+      font-family: 'Roboto', sans-serif, Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #fff8ed;
+      color: #212529;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      text-align: center;
+      font-size: 16px;
+    }
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-            }
-        }
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+      }
+    }
 
-        /*
-       SCROLL & HOVER ANIMATIONS
+    /*
+     SCROLL & HOVER ANIMATIONS
     */
-        @keyframes slideUp {
-            0% {
-                transform: translateY(50px);
-                opacity: 0;
-            }
+    @keyframes slideUp {
+      0% {
+        transform: translateY(50px);
+        opacity: 0;
+      }
 
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
-        @keyframes slideLeft {
-            0% {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
+    @keyframes slideLeft {
+      0% {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
 
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
-        @keyframes slideRight {
-            0% {
-                transform: translateX(50px);
-                opacity: 0;
-            }
+    @keyframes slideRight {
+      0% {
+        transform: translateX(50px);
+        opacity: 0;
+      }
 
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
-        @keyframes zoomIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
+    @keyframes zoomIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
 
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
 
-            100% {
-                opacity: 1;
-            }
-        }
+      100% {
+        opacity: 1;
+      }
+    }
 
-        .scroll-slide-up,
-        .scroll-slide-left,
-        .scroll-slide-right,
-        .scroll-zoom-in,
-        .scroll-fade-in {
-            opacity: 0;
-        }
+    .scroll-slide-up,
+    .scroll-slide-left,
+    .scroll-slide-right,
+    .scroll-zoom-in,
+    .scroll-fade-in {
+      opacity: 0;
+    }
 
-        .scroll-slide-up.in-view {
-            animation: slideUp 1s ease-out forwards;
-        }
+    .scroll-slide-up.in-view {
+      animation: slideUp 1s ease-out forwards;
+    }
 
-        .scroll-slide-left.in-view {
-            animation: slideLeft 1s ease-out forwards;
-        }
+    .scroll-slide-left.in-view {
+      animation: slideLeft 1s ease-out forwards;
+    }
 
-        .scroll-slide-right.in-view {
-            animation: slideRight 1s ease-out forwards;
-        }
+    .scroll-slide-right.in-view {
+      animation: slideRight 1s ease-out forwards;
+    }
 
-        .scroll-zoom-in.in-view {
-            animation: zoomIn 1s ease-out forwards;
-        }
+    .scroll-zoom-in.in-view {
+      animation: zoomIn 1s ease-out forwards;
+    }
 
-        .scroll-fade-in.in-view {
-            animation: fadeIn 1s ease-out forwards;
-        }
+    .scroll-fade-in.in-view {
+      animation: fadeIn 1s ease-out forwards;
+    }
 
-        .hover-rotate:hover {
-            transform: rotate(3deg) scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
+    .hover-rotate:hover {
+      transform: rotate(3deg) scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
-        /* --------------------------
-       STICKY HEADER & NAVIGATION
+    /* --------------------------
+     STICKY HEADER & NAVIGATION
     -------------------------- */
-        header {
-            background: #a36711;
-            padding: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%;
-        }
+    header {
+      background: #a36711;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+    }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: auto;
-        }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: auto;
+    }
 
-        .logo {
-            float: left;
-            font-size: 24px;
-            font-weight: 700;
-            color: #ffffff;
-        }
+    .logo {
+      float: left;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+    }
 
-        .logo img {
-            height: 50px;
-            display: block;
-            transition: transform 0.3s ease;
-        }
+    .logo img {
+      height: 50px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
 
-        .logo img:hover {
-            transform: scale(1.1);
-        }
+    .logo img:hover {
+      transform: scale(1.1);
+    }
 
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 5px;
-        }
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+    }
 
-        /* Use the ::before pseudo-element to display the hamburger icon */
-        .mobile-menu-toggle::before {
-            content: '☰';
-            display: inline-block;
-        }
+    /* Use the ::before pseudo-element to display the hamburger icon */
+    .mobile-menu-toggle::before {
+      content: '☰';
+      display: inline-block;
+    }
 
-        /* When menu is open, switch the icon to an X */
-        .mobile-menu-toggle.menu-opened::before {
-            content: '✕';
-        }
+    /* When menu is open, switch the icon to an X */
+    .mobile-menu-toggle.menu-opened::before {
+      content: '✕';
+    }
 
-        nav {
-            float: right;
-        }
+    nav {
+      float: right;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
 
-        nav ul li {
-            margin-left: 20px;
-        }
+    nav ul li {
+      margin-left: 20px;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
+    nav ul li a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-        nav ul li a:hover {
-            color: #ffeed2;
-            transform: translateY(-3px);
-        }
+    nav ul li a:hover {
+      color: #ffeed2;
+      transform: translateY(-3px);
+    }
 
-        /* Mobile Navigation Styles */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-                float: right;
-                margin-top: 10px;
-            }
+    /* Mobile Navigation Styles */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+        float: right;
+        margin-top: 10px;
+      }
 
-            nav {
-                float: none;
-                width: 100%;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease;
-                clear: both;
-            }
+      nav {
+        float: none;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        clear: both;
+      }
 
-            nav.open {
-                max-height: 500px;
-            }
+      nav.open {
+        max-height: 500px;
+      }
 
-            nav ul {
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                padding-top: 15px;
-            }
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-top: 15px;
+      }
 
-            nav ul li {
-                margin: 10px 0;
-                width: 100%;
-                text-align: left;
-            }
+      nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: left;
+      }
 
-            .logo {
-                float: left;
-                max-width: 70%;
-            }
+      .logo {
+        float: left;
+        max-width: 70%;
+      }
 
-            .logo img {
-                height: 40px;
-            }
-        }
+      .logo img {
+        height: 40px;
+      }
+    }
 
     /*******************************************************
      * HEADER IMAGE
@@ -274,7 +273,6 @@
       display: flex;
       justify-content: center;
       background-color: #ffeed2;
-      /* Subtle BG */
     }
 
     .header-image img {
@@ -294,7 +292,6 @@
       padding: 40px 20px;
       text-align: center;
       background-color: #ffffff;
-      /* White container */
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
@@ -307,7 +304,6 @@
       font-size: 2rem;
       margin-bottom: 20px;
       color: #a36711;
-      /* Primary accent for headings */
     }
 
     .content-block p {
@@ -315,7 +311,6 @@
       max-width: 800px;
       margin: 0 auto;
       color: #212529;
-      /* Dark text */
     }
 
     /*******************************************************
@@ -330,13 +325,11 @@
       margin: 40px auto;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       background-color: #ffeed2;
-      /* Subtle BG for testimonials */
     }
 
     .testimonials h2 {
       font-size: 28px;
       color: #a36711;
-      /* Primary accent for heading */
       font-weight: bold;
       margin-bottom: 20px;
     }
@@ -350,7 +343,6 @@
 
     .testimonial {
       background: #ffffff;
-      /* White container for each testimonial */
       color: #212529;
       padding: 20px;
       border-radius: 15px;
@@ -385,7 +377,6 @@
       margin: 40px auto;
       padding: 40px 20px;
       background-color: #ffffff;
-      /* White container */
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
@@ -416,7 +407,6 @@
       font-size: 1rem;
       font-weight: bold;
       color: #a36711;
-      /* Primary accent for "in" text */
     }
 
     .info {
@@ -454,14 +444,12 @@
       margin: 40px auto;
       padding: 20px;
       background-color: #ffffff;
-      /* White container */
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
 
     .card {
       background-color: #ffeed2;
-      /* Subtle BG for cards */
       border-radius: 8px;
       padding: 20px;
       width: calc(33.33% - 20px);
@@ -478,7 +466,6 @@
     .card h2 {
       font-size: 1.5rem;
       color: #a36711;
-      /* Primary accent for heading */
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -487,13 +474,42 @@
     .card p {
       font-size: 1rem;
       color: #212529;
-      /* Dark text */
       margin-bottom: 15px;
     }
 
     .card .highlight {
       color: #212529;
       font-weight: bold;
+    }
+
+    /* Cards default to three columns on larger screens */
+    .card {
+      background-color: #ffeed2;
+      border-radius: 8px;
+      padding: 20px;
+      width: calc(33.33% - 20px);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      /* Optional spacing at bottom */
+    }
+
+    /* For tablets or screens up to 768px wide:
+   use two columns instead of three */
+    @media (max-width: 768px) {
+      .card {
+        width: calc(50% - 20px);
+      }
+    }
+
+    /* For very small screens (up to 480px wide):
+   use one column and full width */
+    @media (max-width: 480px) {
+      .card {
+        width: 100%;
+        margin: 0 auto 20px auto;
+      }
     }
 
     /*******************************************************
@@ -504,7 +520,6 @@
       margin: 40px auto;
       padding: 40px 20px;
       background-color: #ffffff;
-      /* White container */
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
     }
@@ -514,7 +529,6 @@
       margin-bottom: 30px;
       font-size: 2.5rem;
       color: #a36711;
-      /* Primary accent for heading */
     }
 
     .table-responsive {
@@ -530,19 +544,16 @@
 
     thead th {
       background-color: #ffeed2;
-      /* Subtle BG for table header */
       padding: 15px;
       text-transform: uppercase;
       letter-spacing: 1px;
       border-bottom: 2px solid #d9a456;
-      /* Secondary accent border */
       color: #212529;
     }
 
     tbody td {
       padding: 15px;
       border-bottom: 1px solid #d9a456;
-      /* Secondary accent border */
       font-size: 1rem;
       color: #212529;
     }
@@ -553,7 +564,6 @@
 
     tbody tr:hover {
       background-color: #ffeed2;
-      /* Subtle BG on hover */
       transform: translateY(-3px);
     }
 
@@ -574,13 +584,10 @@
      *******************************************************/
     footer {
       background: #ffffff;
-      /* White container */
       color: #212529;
-      /* Dark text */
       padding: 40px 20px;
       margin-top: 40px;
       border-top: 1px solid #d9a456;
-      /* Secondary accent border on top */
     }
 
     .footer-container {
@@ -601,7 +608,6 @@
       font-size: 1.2rem;
       margin-bottom: 16px;
       color: #a36711;
-      /* Primary accent for headings */
     }
 
     .footer-column ul {
@@ -632,216 +638,14 @@
       margin-right: 8px;
       font-size: 1rem;
       color: #a36711;
-      /* Primary accent for icons if desired */
     }
 
     /*******************************************************
-     * RESPONSIVE MEDIA QUERIES
+     * RESPONSIVE MEDIA QUERIES (for very small screens)
      *******************************************************/
-    @media (max-width: 768px) {
-
-      /* Header and Navigation */
-      .container-header {
-        padding: 10px;
-      }
-
-      .logo {
-        font-size: 1.2rem;
-      }
-
-      nav ul {
-        display: none;
-        /* Hide desktop nav on mobile */
-      }
-
-      .nav-toggle {
-        display: block;
-        /* Show checkbox for mobile toggle */
-      }
-
-      .hamburger {
-        display: flex;
-        /* Show hamburger on mobile */
-      }
-
-      nav ul {
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background-color: #a36711;
-        /* Match header background */
-        flex-direction: column;
-        padding: 15px 0;
-        z-index: 100;
-      }
-
-      nav ul li {
-        margin: 0;
-        padding: 10px 20px;
-        text-align: center;
-      }
-
-      nav ul li a {
-        color: #ffeed2;
-        /* Beige text for visibility on gold background */
-        font-size: 1rem;
-      }
-
-      .nav-toggle:checked~ul {
-        display: flex;
-        /* Show menu when checkbox is checked */
-      }
-
-      /* Header Image */
-      .header-image {
-        padding: 20px 0;
-      }
-
-      .header-image img {
-        width: 100%;
-        border-radius: 8px;
-      }
-
-      /* About Section */
-      .about-section {
-        padding: 20px;
-        margin: 20px auto;
-      }
-
-      .content-block {
-        margin-bottom: 30px;
-      }
-
-      .content-block h2 {
-        font-size: 1.5rem;
-      }
-
-      .content-block p {
-        font-size: 0.9rem;
-      }
-
-      /* Testimonials */
-      .testimonials {
-        width: 90%;
-        padding: 20px;
-        margin: 20px auto;
-      }
-
-      .testimonials h2 {
-        font-size: 1.5rem;
-      }
-
-      .testimonial {
-        width: 100%;
-        min-width: 100%;
-        margin-bottom: 20px;
-      }
-
-      /* Team Section */
-      .team-section {
-        padding: 20px;
-        margin: 20px auto;
-      }
-
-      .team-member {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 30px;
-      }
-
-      .photo-linkedin {
-        margin-right: 0;
-        margin-bottom: 15px;
-      }
-
-      .info {
-        text-align: center;
-      }
-
-      .info h3 {
-        font-size: 1rem;
-      }
-
-      .info .title {
-        font-size: 0.9rem;
-      }
-
-      .info p {
-        font-size: 0.85rem;
-      }
-
-      /* Card Container */
-      .card-container {
-        padding: 15px;
-        margin: 20px auto;
-      }
-
-      .card {
-        width: 100%;
-        margin-bottom: 15px;
-      }
-
-      /* Price Table */
-      .price-table-section {
-        padding: 20px;
-        margin: 20px auto;
-      }
-
-      .price-table-section h1 {
-        font-size: 1.8rem;
-      }
-
-      .table-responsive {
-        overflow-x: auto;
-        /* Allow horizontal scrolling for tables on mobile */
-      }
-
-      table {
-        min-width: 300px;
-        /* Ensure table is wide enough to scroll */
-      }
-
-      thead th,
-      tbody td {
-        padding: 10px;
-        font-size: 0.9rem;
-      }
-
-      /* Footer */
-      footer {
-        padding: 20px;
-      }
-
-      .footer-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .footer-column {
-        min-width: 100%;
-      }
-
-      .footer-column h3 {
-        font-size: 1rem;
-      }
-
-      .footer-column ul li,
-      .footer-column p {
-        font-size: 0.85rem;
-      }
-    }
-
     @media (max-width: 480px) {
-
-      /* Further refinements for very small screens */
       .logo {
         font-size: 1rem;
-      }
-
-      .hamburger {
-        width: 25px;
-        height: 18px;
       }
 
       .header-image {
@@ -904,8 +708,8 @@
       <div class="logo">
         <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
       </div>
-      <!-- Button is empty and uses ::before for the hamburger icon -->
-      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
+      <!-- Added type="button" so the button works properly on mobile -->
+      <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
       <nav>
         <ul>
           <li><a href="/index.html">Home</a></li>
@@ -916,40 +720,35 @@
       </nav>
     </div>
   </header>
-
   <!-- HEADER IMAGE -->
   <section class="header-image fade-element">
     <img src="https://pravarshaindustries.com/img/aboutus.webp" alt="Dairy barn with cows">
   </section>
-
   <!-- ABOUT SECTION -->
   <section class="about-section fade-element">
     <div class="content-block">
       <h2>Who are we?</h2>
       <p>
-        Shree Krishna Dairy is a corporate citizen that understands the importance of
-        hygienic milk and dairy products. Established in 1975, we've proudly served
-        our community with high‐quality dairy items crafted with tradition, care, and
-        innovation.
+        Shree Krishna Dairy is a corporate citizen that understands the importance of hygienic milk and dairy products.
+        Established in 1975, we've proudly served our community with high‐quality dairy items crafted with tradition,
+        care, and innovation.
       </p>
     </div>
     <div class="content-block">
       <h2>Our mission</h2>
       <p>
-        Our mission is to become the premier retailer of high-quality food products by
-        delivering unmatched customer value and acting as responsible citizens in our
-        communities.
+        Our mission is to become the premier retailer of high-quality food products by delivering unmatched customer
+        value and acting as responsible citizens in our communities.
       </p>
     </div>
     <div class="content-block">
       <h2>Our vision</h2>
       <p>
-        We strive to meet the diverse needs of our consumers every day by marketing
-        and selling foods that are consistent and of the highest quality.
+        We strive to meet the diverse needs of our consumers every day by marketing and selling foods that are
+        consistent and of the highest quality.
       </p>
     </div>
   </section>
-
   <!-- TESTIMONIALS -->
   <section class="testimonials fade-element">
     <h2>What The Clients Say About Us</h2>
@@ -958,29 +757,26 @@
         <h3>Amit Kumar</h3>
         <p class="role">Customer</p>
         <p>
-          Shree Krishna Dairy consistently delivers fresh, high-quality products with
-          warm, friendly service that makes every visit a delight....
+          Shree Krishna Dairy consistently delivers fresh, high-quality products with warm, friendly service that makes
+          every visit a delight....
         </p>
       </div>
       <div class="testimonial">
         <h3>Ankit Poddar</h3>
         <p class="role">Customer</p>
         <p>
-          I always leave with a smile thanks to their excellent service and top-notch
-          milk quality......
+          I always leave with a smile thanks to their excellent service and top-notch milk quality......
         </p>
       </div>
       <div class="testimonial">
         <h3>Mohit Sharma</h3>
         <p class="role">Customer</p>
         <p>
-          It's refreshing to see an owner so committed to customer satisfaction and
-          product excellence....
+          It's refreshing to see an owner so committed to customer satisfaction and product excellence....
         </p>
       </div>
     </div>
   </section>
-
   <!-- TEAM SECTION -->
   <section class="team-section fade-element">
     <div class="team-member">
@@ -1023,72 +819,62 @@
         <h3>Mrs. Sanju Mishra</h3>
         <p class="title">Finance</p>
         <p>
-          Mrs. Sanju Mishra, the wife of Vedprakash Mishra, manages the finances at
-          Shree Krishna Dairy. She introduced a card payment system that allows
-          customers to buy on credit and pay later, making it easier for them. Her
-          hard work and support, alongside her husband, have helped improve and grow
-          the business.
+          Mrs. Sanju Mishra, the wife of Vedprakash Mishra, manages the finances at Shree Krishna Dairy. She introduced
+          a card payment system that allows customers to buy on credit and pay later, making it easier for them. Her
+          hard work and support, alongside her husband, have helped improve and grow the business.
         </p>
       </div>
     </div>
   </section>
-
   <!-- CARD CONTAINER -->
   <div class="card-container fade-element scroll-slide-right">
     <div class="card">
       <h2>Legal Compliance</h2>
       <p>
-        At <span class="highlight">Shree Krishna Dairy</span>, we strictly ensure
-        compliance with all legal norms, whether for our products or brands in the
-        market. We understand its importance and guarantee its fulfilment.
+        At <span class="highlight">Shree Krishna Dairy</span>, we strictly ensure compliance with all legal norms,
+        whether for our products or brands in the market. We understand its importance and guarantee its fulfilment.
       </p>
     </div>
     <div class="card">
       <h2>Food Safety Guarantee</h2>
       <p>
-        We believe in the philosophy of <span class="highlight">"Consumer First"</span>.
-        As part of our corporate responsibility, we ensure that food safety is our top
-        priority. All our plants have FSSAI licenses, certifying our commitment to food
-        safety and dependability.
+        We believe in the philosophy of <span class="highlight">"Consumer First"</span>. As part of our corporate
+        responsibility, we ensure that food safety is our top priority. All our plants have FSSAI licenses, certifying
+        our commitment to food safety and dependability.
       </p>
     </div>
     <div class="card">
       <h2>Consumer Preference</h2>
       <p>
-        <span class="highlight">Shree Krishna Dairy</span> has a strong focus on its
-        consumers. We go the extra mile to provide consistent quality products that
-        cater to their organoleptic preferences. We not only aim to give consumers the
-        best but also understand their needs through robust customer-connect programs.
+        <span class="highlight">Shree Krishna Dairy</span> has a strong focus on its consumers. We go the extra mile to
+        provide consistent quality products that cater to their organoleptic preferences. We not only aim to give
+        consumers the best but also understand their needs through robust customer-connect programs.
       </p>
     </div>
     <div class="card">
       <h2>Customer Satisfaction</h2>
       <p>
-        Our customer satisfaction comes not only from consistent quality products but
-        also from our customer care services, which are readily available to provide
-        product-related information and address any queries or concerns.
+        Our customer satisfaction comes not only from consistent quality products but also from our customer care
+        services, which are readily available to provide product-related information and address any queries or
+        concerns.
       </p>
     </div>
     <div class="card">
       <h2>Supplier Assurance</h2>
       <p>
-        We strive to ensure consistent quality products with conforming purity, made
-        possible through our own
-        <span class="highlight">Shree Krishna Dairy Distribution Centre</span>, agents,
-        and retailers. We ensure on-time deliveries so that our products are available
-        to consumers 24/7.
+        We strive to ensure consistent quality products with conforming purity, made possible through our own <span
+          class="highlight">Shree Krishna Dairy Distribution Centre</span>, agents, and retailers. We ensure on-time
+        deliveries so that our products are available to consumers 24/7.
       </p>
     </div>
     <div class="card">
       <h2>Quality at Best Price</h2>
       <p>
-        Being in the dairy market, we ensure our products are not only the healthiest
-        and tastiest but also affordable for everyone. Quality is not something we
-        strive for; it's something we guarantee with consistency.
+        Being in the dairy market, we ensure our products are not only the healthiest and tastiest but also affordable
+        for everyone. Quality is not something we strive for; it's something we guarantee with consistency.
       </p>
     </div>
   </div>
-
   <!-- PRICE TABLE SECTION -->
   <div class="container price-table-section scroll-slide-up">
     <h1>Milk Products Price List</h1>
@@ -1171,7 +957,6 @@
       </table>
     </div>
   </div>
-
   <!-- FOOTER -->
   <footer class="fade-element">
     <div class="footer-container">
@@ -1216,12 +1001,11 @@
         </p>
         <p>
           <span class="footer-icon">📞</span>
-          8104329223  |  882851983
+          8104329223 | 882851983
         </p>
       </div>
     </div>
   </footer>
-
   <!-- SCROLL ANIMATION SCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -1250,12 +1034,12 @@
       }, { threshold: 0.1 });
       scrollElements.forEach(el => scrollObserver.observe(el));
 
-      // Mobile Menu Toggle - Fixed Implementation
+      // Mobile Menu Toggle
       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
       const nav = document.querySelector('nav');
-      
+
       if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', function() {
+        mobileMenuToggle.addEventListener('click', function () {
           nav.classList.toggle('open');
           this.classList.toggle('menu-opened');
         });

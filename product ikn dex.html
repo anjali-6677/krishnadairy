@@ -41,89 +41,135 @@
       transform: translateY(0);
     }
 
+     /* --------------------------
+     STICKY HEADER & NAVIGATION
+    -------------------------- */
     header {
-      background-color: #a36711;
-      padding: 10px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #a36711;
+      padding: 20px;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
     }
+
     .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      overflow: auto;
     }
+
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #ffeed2;
+      float: left;
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
     }
+
+    .logo img {
+      height: 50px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    /* Use the ::before pseudo-element to display the hamburger icon */
+    .mobile-menu-toggle::before {
+      content: '☰';
+      display: inline-block;
+    }
+
+    /* When menu is open, switch the icon to an X */
+    .mobile-menu-toggle.menu-opened::before {
+      content: '✕';
+    }
+
+    nav {
+      float: right;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
       align-items: center;
     }
+
     nav ul li {
-      padding: 0 15px;
+      margin-left: 20px;
     }
+
     nav ul li a {
       text-decoration: none;
-      color: #d9a456;
-      transition: color 0.3s, transform 0.3s;
+      color: #ffffff;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
+
     nav ul li a:hover {
       color: #ffeed2;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    /* Mobile Navigation Toggle */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: #d9a456;
-      cursor: pointer;
+    /* Mobile Navigation Styles */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+        float: right;
+        margin-top: 10px;
+      }
+
+      nav {
+        float: none;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        clear: both;
+      }
+
+      nav.open {
+        max-height: 500px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding-top: 15px;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: left;
+      }
+
+      .logo {
+        float: left;
+        max-width: 70%;
+      }
+
+      .logo img {
+        height: 40px;
+      }
     }
 
-    .category-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 20px;
-      justify-content: center;
-      background-color: #ffffff;
-    }
-    .category-button {
-      background-color: #ffeed2;
-      color: #212529;
-      border: 1px solid #d9a456;
-      border-radius: 20px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
-    }
-    .category-button a {
-      color: inherit;
-      text-decoration: none;
-    }
-    .category-button.active {
-      background-color: #a36711;
-      color: #ffffff;
-      border-color: #a36711;
-    }
-    .category-button:hover {
-      transform: translateY(-2px);
-      background-color: #d9a456;
-      color: #212529;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
 
     .products-section {
       max-width: 1200px;
@@ -372,14 +418,20 @@
   </style>
 </head>
 <body>
-  <header class="fade-element">
+<!-- =====================
+       Sticky Nav Section
+  ===================== -->
+  <header>
     <div class="container">
-      <div class="logo">Shree Krishna Dairy</div>
-      <button class="nav-toggle">☰</button>
+      <div class="logo">
+        <img src="https://i.postimg.cc/X7hHtkf0/Screenshot-2025-02-26-000909.png" alt="Krishna Dairy Logo" />
+      </div>
+      <!-- Added type="button" so the button works properly on mobile -->
+      <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu"></button>
       <nav>
         <ul>
           <li><a href="/index.html">Home</a></li>
-          <li><a href="/product ikn dex.html">Products</a></li>
+          <li><a href="/product index.html">Products</a></li>
           <li><a href="/contect us index.html">Contact Us</a></li>
           <li><a href="/about us index.html">About Us</a></li>
         </ul>
@@ -1014,13 +1066,16 @@
 
       fadeElements.forEach(el => fadeInOnScroll.observe(el));
 
-      // Mobile Navigation Toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu = document.querySelector('nav ul');
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-      });
+      // Mobile Menu Toggle
+      const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+      const nav = document.querySelector('nav');
+
+      if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function () {
+          nav.classList.toggle('open');
+          this.classList.toggle('menu-opened');
+        });
+      }
     });
   </script>
 </body>
